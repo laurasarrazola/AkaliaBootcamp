@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contáctanos | Akalia</title>
+  <%- include('../partials/head.ejs'); %>
+</head>
+<body class="h-100 m-0 d-flex flex-column vh-100">
+  <%- include('../partials/navbar.ejs'); %>
+  <main class="flex-grow-1 d-flex flex-column justify-content-start">
+    <section class="container d-flex flex-column align-items-center justify-content-center py-5 ">
+      <h3 class="text-center text-negro mb-4">Contáctanos</h3>
+      <form class="w-100" style="max-width:400px;">
+        <div class="mb-3">
+          <label for="mensaje" class="form-label text-negro">Mensaje</label>
+          <input type="text" class="form-control" id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí">
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label text-negro">Correo electrónico</label>
+          <input type="email" class="form-control" id="correo" name="correo" placeholder="tu@email.com">
+        </div>
+        <button type="submit" class="btn btn-explorar w-100">Enviar</button>
+      </form>
+    </section>
+</main>
+<%- include('../partials/footer.ejs'); %>
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* Banner principal */
+.akalia-banner {
+  position: relative;
+  width: 100%;
+  
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.akalia-banner-content {
+  background: #FFF9E4;
+  border-radius: 1rem;
+  padding: 2.5rem 3rem;
+  max-width: 700px;
+  margin: 8.5rem auto;
+  text-align: center;
+  box-shadow: 0 2px 12px #00000010;
+}
+
+.akalia-banner-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: #1C1C1C;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.akalia-banner-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #651313;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.akalia-banner-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  color: #1C1C1C;
+  margin-bottom: 2rem;
+}
+
+.akalia-banner-register {
+  position: absolute;
+  right: 3rem;
+  bottom: 2rem;
+  background: #FFF9E4CC;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px #00000010;
+}
+
+.akalia-banner-register-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #651313;
+}
+
+.categoria-container {
+  padding: 3rem 0;
+  
+  color: var(--Font-Color1, #666);
+text-align: center;
+
+/* Subtitulo */
+font-family: Montserrat;
+font-size: 1.5625rem;
+font-style: normal;
+font-weight: 600;
+line-height: var(--Number, 1.5rem); /* 96% */
+}
+
+
+.categoria-container h1 {
+  color: Negro;
+
+/* Titulo grande */
+font-size: 2.4375rem;
+font-weight: 700;
+line-height: 2rem; /* 82.051% */
+}

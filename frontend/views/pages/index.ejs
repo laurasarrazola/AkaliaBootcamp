@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Temporary jobs page">
+  <title>Akalia</title>
+  <%- include('../partials/head.ejs'); %>
+
+</head>
+
+<body>
+  <%- include('../partials/navbar.ejs'); %>
+    <main>
+      <!-- SEARCHING SECTION-->
+      <section>
+        <!-- Banner principal -->
+        <div class="akalia-banner" style="background-image: url('/img/imgs/banner.svg');">
+          <div class="akalia-banner-content">
+            <span class="akalia-banner-subtitle">Explora Akalia</span>
+            <h1 class="akalia-banner-title">Conecta con el arte<br>hecho a mano</h1>
+            <p class="akalia-banner-desc">Descubre piezas únicas hechas por manos colombianas.<br>
+              Diseños con historia, tradición y alma.
+            </p>
+            <button class="btn btn-explorar" type="button" data-bs-target=".categoria-container">Explorar ahora</button>
+          </div>
+          <div class="akalia-banner-register">
+            <span class="akalia-banner-register-text">¿Quieres dar a conocer tu arte?</span>
+
+            <button class="btn btn-terracota" data-bs-toggle="modal"
+              data-bs-target="#registerModal">Registrarse</button>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="categoria-container">
+
+        <div class="container d-flex align-items-center justify-content-center flex-column gap-3">
+          <h4>Elige una categoría y encuentra piezas auténticas con historia</h4>
+          <h1 class="text-center text-negro">Explora las categorías</h1>
+          <div class="row">
+            <% if (typeof categorias !=='undefined' && categorias.length) { %>
+              <% categorias.forEach(categoria => { %>
+                <div class="col-md-3 mb-4">
+                  <div class="card border-danger">
+                    <img src="<%= categoria.imagenCategoria %>" class="card-img-top card-img-fixed"
+                      alt="<%= categoria.nombreCategoria %>">
+                    <div class="card-body bg-light">
+                      <h5 class="card-title">
+                        <%= categoria.nombreCategoria %>
+                      </h5>
+
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+                  <% } else { %>
+                    <li><span>Sin categorías</span></li>
+                    <% } %>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="container-fluid d-flex flex-column align-items-center justify-content-center ">
+        <h2>Productos destacados</h2>
+        <div class="row">
+          <% if (typeof productos !=='undefined' && productos.length) { %>
+            <% productos.forEach(producto=> { %>
+              <div class="col-11 col-sm-6 col-md-4 col-lg-3 mb-4  d-flex justify-content-center" style=" height: 350px">
+                <article class="card rounded-0 border-0 ">
+                  <img src="<%= producto.imagenProducto %>"
+                    class="card-img-top img-fluid h-100 rounded-0" alt="<%= producto.nombreProducto %>" />
+                  <div class="card-body">
+                    <h5 class="card-title mb-1">
+                      <%= producto.tituloProducto %>
+                    </h5>
+                    <p class="card-text text-muted mb-2">
+                      <%= producto.descripcionProducto %>
+                    </p>
+                    <p class="fw-semibold text-dark">
+                      <%= producto.precio %>
+                    </p>
+                  </div>
+              </div>
+              </article>
+              <% }); %>
+                <% } else { %>
+                  <li><span>Sin productos</span></li>
+                  <% } %>
+        </div>
+      </section>
+
+      <!-- FOOTER-->
+      <%- include('../partials/footer.ejs'); %>
+    </main>
+    <script src="/lib/js/bootstrap.min.js.map"></script>
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/js/login_signup.js"></script>
+    <!-- Bootstrap + FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- Script personalizado -->
+</body>
+<%- include('../partials/modal-login.ejs'); %>
+  <%- include('../partials/modal-signup.ejs'); %>
+
+
+</html>

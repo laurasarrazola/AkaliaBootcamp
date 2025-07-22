@@ -1,0 +1,40 @@
+<div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content akalia-modal">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Crear cuenta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3 text-start">
+              <label class="form-label">Dirección de correo electrónico</label>
+              <input type="email" class="akalia-input" required>
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="akalia-input" required>
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Apellido</label>
+              <input type="text" class="akalia-input" required>
+            </div>
+            <div class="mb-3 text-start position-relative">
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="akalia-input" id="registerPwd" required minlength="8"
+                pattern="(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}"
+                title="Debe tener al menos 8 caracteres, una mayúscula, un número y un símbolo.">
+              <span class="toggle-eye" id="toggleRegisterPwd"><i class="fa fa-eye"></i></span>
+            </div>
+
+            <p class="small text-muted mb-3 text-start">
+              Al hacer click en crear cuenta aceptas las condiciones de uso y la política de privacidad de Akalia.
+            </p>
+
+            <button type="submit" class="btn btn-terracota w-100 mb-3 text-start">Crear cuenta</button>
+            <a href="#" class="link-akalia d-block text-start" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">¿Ya tienes cuenta? Inicia sesión</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

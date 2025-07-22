@@ -1,0 +1,20 @@
+{
+  "name": "apirestfulv4",
+  "version": "1.0.0",
+  "description": "Adaptacion del frontendcon ejs a nuestra API, quedejará de ser API ya que sus endpoints consumiran ejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "dotenv": "^17.0.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
