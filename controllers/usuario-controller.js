@@ -34,19 +34,20 @@ const obtenerUsuarioPorId = (req, res) => {
  *     INSERCIÓN NUEVO USUARIO
  ************************************/
 const crearUsuario = (req, res) => {
-  const { idRol, nombreUsuario, apellidoUsuario, email, contrasena, telefono } = req.body;
+  const { nombreUsuario, apellidoUsuario, email, contrasena, telefono } = req.body;
 
   if (!nombreUsuario || !apellidoUsuario || !email || !contrasena) {
     return res.status(400).json({ error: 'Faltan campos obligatorios' });
   }
 
-  const query = `INSERT INTO usuario (idRol, nombreUsuario, apellidoUsuario, email, contrasena, telefono) VALUES (?, ?, ?, ?, ?, ?)`;
-  const values = [idRol || null, nombreUsuario, apellidoUsuario, email, contrasena, telefono || null];
+  const query = `INSERT INTO usuario (nombreUsuario, apellidoUsuario, email, contrasena, telefono) VALUES (?, ?, ?, ?, ?)`;
+  const values = [nombreUsuario, apellidoUsuario, email, contrasena, telefono || null];
 
   db.query(query, values, (err, result) => {
     if (err) {
       console.error('Error al insertar usuario:', err);
-      return res.status(500).json({ error: 'Error al insertar usuario' });
+      // return res.status(500).json({ error: 'Error al insertar usuario' });
+      return res.status(500).json({ error: err.sqlMessage });
     }
     res.status(201).json({ mensaje: 'Usuario creado correctamente', idInsertado: result.insertId });
   });

@@ -7,6 +7,7 @@ const PORT = 3000; // Puerto para Express, no para MySQL
  *CONFIGURACIÓN DE MIDDLEWARES*
  ******************************/
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 /****************************

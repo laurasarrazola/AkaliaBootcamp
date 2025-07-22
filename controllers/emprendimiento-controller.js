@@ -34,18 +34,18 @@ const obtenerEmprendimientoPorId = (req, res) => {
  * INSERCIÓN NUEVO EMPRENDIMIENTO
  ************************************/
 const crearEmprendimiento = (req, res) => {
-  const { nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio } = req.body;
+  const { idPersona, nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio } = req.body;
 
-  if (!nombreEmprendimiento || !fechaRegistro || !descripcionNegocio) {
+  if (!idPersona || !nombreEmprendimiento || !descripcionNegocio) {
     return res.status(400).json({ error: 'Faltan campos obligatorios' });
   }
 
   const query = `
     INSERT INTO emprendimiento 
-    (nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio) 
+    (idPersona, nombreEmprendimiento, imagenLogo, descripcionNegocio) 
     VALUES (?, ?, ?, ?)
   `;
-  const values = [nombreEmprendimiento, imagenLogo || null, fechaRegistro, descripcionNegocio];
+  const values = [idPersona, nombreEmprendimiento, imagenLogo || null, descripcionNegocio];
 
   db.query(query, values, (err, result) => {
     if (err) {
@@ -61,17 +61,18 @@ const crearEmprendimiento = (req, res) => {
  ************************************/
 const actualizarEmprendimiento = (req, res) => {
   const id = req.params.id;
-  const { nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio } = req.body;
+  const { idPersona, nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio } = req.body;
 
   const query = `
     UPDATE emprendimiento SET 
+      idPersona = ?,
       nombreEmprendimiento = ?, 
       imagenLogo = ?, 
       fechaRegistro = ?, 
       descripcionNegocio = ?
     WHERE idEmprendimiento = ?
   `;
-  const values = [nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio, id];
+  const values = [idPersona, nombreEmprendimiento, imagenLogo, fechaRegistro, descripcionNegocio, id];
 
   db.query(query, values, (err, result) => {
     if (err) {
