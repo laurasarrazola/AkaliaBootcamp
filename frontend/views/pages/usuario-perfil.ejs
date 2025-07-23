@@ -10,7 +10,7 @@
 
 <body class="h-100 m-0 d-flex flex-column vh-100 bg-blanco-light">
   <%- include('../partials/navbar.ejs'); %>
-    <div class="d-flex flex-row h-100">
+    <div class="d-flex flex-row h-75">
       <%- include('../partials/sidebar.ejs'); %>
         <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center py-5">
           <section class="usuario-perfil-card">
@@ -20,7 +20,10 @@
                 <div class="col-md-6 mb-3 mb-md-0">
                   <strong class="usuario-perfil-label">Nombres y apellido</strong>
                   <div>
-                    <%= usuario.nombre %>
+                    <%= usuario.nombreUsuario %>
+                  </div>
+                  <div>
+                    <%= usuario.apellidoUsuario %>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -39,7 +42,7 @@
                 </div>
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Contraseña</strong>
-                  <div>********</div>
+                  <div><%= usuario.contrasena %></div>
                 </div>
               </div>
               <div class="row mb-4">
@@ -68,6 +71,5 @@
     </div>
     <%- include('../partials/footer.ejs'); %>
 </body>
-<%- include('../partials/footer.ejs'); %>
 
 </html>
