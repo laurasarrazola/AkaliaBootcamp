@@ -194,3 +194,8 @@ body {
     display: none !important;
   }
 }
+
+
+.product-card {
+  cursor: pointer;
+}
