@@ -70,6 +70,7 @@ router.post("/login", async (req, res) => {
     }
 
     return res.status(200).json(usuario);
+
   } catch (error) {
     console.error("Error al iniciar sesión:", error.toJSON?.() || error);
 
