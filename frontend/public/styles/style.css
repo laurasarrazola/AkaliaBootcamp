@@ -1,20 +1,20 @@
 body {
   background-color: var(--normal-lights-blanco-light);
+  width: 100%;
 }
 
 .akalia-navbar {
   background-color: #FFF9E4;
   border-bottom: 1px solid #b9b9b9;
-  max-height: 80px;
-
+  max-height: 70px;
 }
 
 #imgHeader {
   max-height: 50px;
+  min-width: 30px;
+  min-height: 50px;
 }
-.akalia-search-container {
-  max-width: 800px;
-}
+
 .akalia-search-form {
   background: #fff;
   border-radius: 2rem;
@@ -33,7 +33,7 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  padding-left: 0.5rem;
+  padding-left: 0rem;
 }
 
 

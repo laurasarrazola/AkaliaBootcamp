@@ -1,16 +1,17 @@
-<nav class="navbar akalia-navbar navbar-expand-md" id="myNav">
-  <div class="container-fluid px-3 m-auto gap-3 d-flex justify-content-evenly">
-    <a class="navbar-brand col   h-100" href="/">
-      <img id="imgHeader" class="img-fluid object-fit-contain  d-block d-md-none " src="/img/logo/A-logo.svg" alt="logotipo Akalia">
-      <img id="imgHeader" class="d-none d-md-block img-fluid object-fit-contain " src="/img/logo/logotipo_vino.svg"
+<nav class="navbar justify-content-center akalia-navbar navbar-expand-md z-1" id="myNav">
+  <div class="container-fluid px-3">
+    <div class="d-flex justify-content-between align-items-center w-100 gap-3">
+    <a class="navbar-brand d-flex h-100 m-0" href="/">
+      <img id="imgHeader" class="img-fluid object-fit-contain  d-block d-sm-none " src="/img/logo/A-logo.svg" alt="logotipo Akalia">
+      <img id="imgHeader" class="d-none d-sm-block img-fluid object-fit-contain " src="/img/logo/logotipo_vino.svg"
         alt="logotipo Akalia"></a>
 
     <!-- Search Section -->
-    <div class="akalia-search-container flex-grow-1 d-flex align-items-center justify-content-center">
-      <form class="akalia-search-form d-flex align-items-center w-100" role="search">
+    <div class="akalia-search-container  flex-grow-1 d-flex align-items-center justify-content-center">
+      <form class="akalia-search-form d-flex align-items-center  col-md-6" role="search">
         <!-- Filtro -->
         <div class="dropdown">
-          <button class="btn border-0 px-3 py-2" type="button" id="dropdownFiltro" data-bs-toggle="dropdown"
+          <button class="btn border-0 px-2 py-2" type="button" id="dropdownFiltro" data-bs-toggle="dropdown"
             aria-expanded="false">
             <!-- Filtro SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -28,8 +29,8 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownFiltro">
             <% if (typeof categorias !=='undefined' && categorias.length) { %>
               <% categorias.forEach(cat=> { %>
-                <li><a class="dropdown-item" href="#" data-categoria="<%= cat %>">
-                    <%= cat %>
+                <li><a class="dropdown-item" href="#" data-categoria="<%= cat.nombreCategoria %>">
+                    <%= cat.nombreCategoria %>
                   </a></li>
                 <% }) %>
                   <% } else { %>
@@ -54,7 +55,7 @@
               </defs>
             </svg>
           </span>
-          <input class="form-control border-0 ps-5 py-3" type="text" name="search"
+          <input class="form-control border-0 ps-4 py-3" type="text" name="search"
             placeholder="Busca tus artículos de interés" aria-label="Buscar">
         </div>
       </form>
@@ -63,18 +64,15 @@
     <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon cl-dark"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end bg-blanco " id="collapsibleNavbar">
+    </div>
+    <div class="collapse navbar-collapse justify-content-end bg-blanco py-3 " id="collapsibleNavbar">
 
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end align-items-center">
 
-       
         <!-- Navbar para visitante -->
-        <div class="container text-nowrap text-center px-0">
-          <button class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
-        </div>
-
-        <div class="container text-center px-0">
-          <button class="btn btn-terracota" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+        <div class="container text-nowrap text-center px-0 d-flex justify-content-center gap-3">
+          <button class="btn btn-basic text-nowrap" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
+          <button class="btn btn-terracota text-nowrap" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
         </div>
         
       </div>
