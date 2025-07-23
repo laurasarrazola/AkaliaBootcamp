@@ -34,6 +34,9 @@ app.use('/api/redSocial', redSocialRoutes);
 const usuarioRoutes = require('./routes/usuario-routes.js');
 app.use('/api/usuarios', usuarioRoutes);
 
+const authRoutes = require('./routes/usuario-routes.js');
+app.use('/api', authRoutes);
+
 /****************************
  *     INICIAR SERVIDOR     *
  ****************************/

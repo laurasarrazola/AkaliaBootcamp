@@ -9,9 +9,7 @@ require('dotenv').config();
 /*******************************
  * DEFINIR URL BASE DE LA API  *
  *******************************/
-const API_BASE_URL = process.env.URL_BASE || 'http://localhost:7000';
-
-
+const API_BASE_URL = process.env.URL_BASE || 'http://localhost:3000';
 
 /************************************
  * RUTA PRINCIPAL - CARGA DE INICIO *

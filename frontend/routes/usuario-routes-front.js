@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
   const { email, contrasena } = req.body;
 
   try {
-    const response = await axios.post(`${API_BASE_URL}/api/usuarios`, {
+    const response = await axios.post(`${API_BASE_URL}/api/login`, {
       email,
       contrasena,
     });
@@ -69,8 +69,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // Si todo está bien, redirige al perfil del usuario
-    res.redirect("/usuario-perfil");
+    return res.status(200).json(usuario);
   } catch (error) {
     console.error("Error al iniciar sesión:", error.toJSON?.() || error);
 
@@ -91,7 +90,7 @@ router.get('/usuarios', async (req, res) => {
     const response = await axios.get(`${API_BASE_URL}/usuarios`);
     const usuarios = response.data;
 
-    res.render('pages/usuarios', {
+    return res.render('pages/usuarios', {
       usuarios: usuarios,
       titulo: 'Usuarios',
     });
@@ -99,9 +98,25 @@ router.get('/usuarios', async (req, res) => {
     console.error('Error al obtener los usuarios:', error.message);
 
     // Renderizar pagina de error
-    res.status(500).render('Error al obtener los usuarios', {
+    return res.status(500).render('Error al obtener los usuarios', {
       error: 'Error del servidor',
       message: 'No se pudieron cargar los usuarios. Verifica que el backend esté funcionando.',
+    });
+  }
+});
+
+router.get("/usuario-perfil/:id", async (req, res) => {
+  try {
+    const usuario = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.id}`);
+    console.log("Usuario obtenido:", usuario.data);
+    return res.status(200).render("pages/usuario-perfil", {
+      usuario: usuario.data,
+    });
+  } catch (error) {
+    console.error('Error al obtener el perfil del usuario:', error.message);
+    return res.status(500).render("pages/error", {
+      error: 'Error del servidor',
+      message: 'No se pudo obtener el perfil del usuario. Inténtalo de nuevo más tarde.',
     });
   }
 });
