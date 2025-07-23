@@ -20,19 +20,16 @@
                 <div class="col-md-6 mb-3 mb-md-0">
                   <strong class="usuario-perfil-label">Nombres y apellido</strong>
                   <div>
-                    <%= usuario.nombreUsuario %>
-                      <%= usuario.apellidoUsuario %>
+                    <%= usuario.nombre %>
                   </div>
                 </div>
-
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Celular</strong>
                   <div>
-                    <%= usuario.telefono %>
+                    <%= usuario.celular %>
                   </div>
                 </div>
               </div>
-
               <div class="row mb-3">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <strong class="usuario-perfil-label">Correo</strong>
@@ -40,13 +37,11 @@
                     <%= usuario.email %>
                   </div>
                 </div>
-
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Contraseña</strong>
-                  <%= usuario.contrasena %>
+                  <div>********</div>
                 </div>
               </div>
-
               <div class="row mb-4">
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Fecha de registro</strong>
@@ -71,15 +66,7 @@
           </section>
         </main>
     </div>
-
-    <script src="/lib/js/bootstrap.min.js.map"></script>
-    <script src="/lib/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/perfilUsuario.js"></script>
-    <!-- Bootstrap + FontAwesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <!-- Script personalizado -->
-
-
+    <%- include('../partials/footer.ejs'); %>
 </body>
 <%- include('../partials/footer.ejs'); %>
 

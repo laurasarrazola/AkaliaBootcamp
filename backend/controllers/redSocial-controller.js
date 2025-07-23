@@ -34,8 +34,25 @@ const obtenerRedesSocialesPorUsuario = (req, res) => {
     res.status(200).json(results);
   });
 };
+/************************************
+ *    CONSULTA RED SOCIAL POR EMPRENDIMIENTO
+ ************************************/
+const obtenerRedesSocialesPorEmprendimiento = (req, res) => {
+  const idEmprendimiento = req.params.idEmprendimiento;
 
+  db.query('SELECT * FROM redSocial WHERE idEmprendimiento = ?', [idEmprendimiento], (err, results) => {
+    if (err) {
+      console.error('Error al buscar red social:', err);
+      return res.status(500).json({ error: 'Error en la base de datos' });
+    }
 
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Red social no encontrada' });
+    }
+
+    res.status(200).json(results[0]);
+  });
+};
 /************************************
  *    INSERCIÓN NUEVA RED SOCIAL
  ************************************/
@@ -108,5 +125,6 @@ module.exports = {
   obtenerRedesSocialesPorUsuario,
   crearRedSocial,
   actualizarRedSocial,
-  eliminarRedSocial
+  eliminarRedSocial,
+  obtenerRedesSocialesPorEmprendimiento
 };

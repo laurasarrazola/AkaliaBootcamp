@@ -7,10 +7,10 @@ const {
 } = require('../controllers/imagenProducto-controller');
 
 // Ruta para agregar una imagen a un producto (requiere id del producto como parámetro)
-router.post('/:productoId', crearImagenProducto);
+router.post('/:id', crearImagenProducto);
 
 // Ruta para obtener todas las imágenes de un producto
-router.get('/:productoId', obtenerImagenesPorProducto);
+router.get('/:id', obtenerImagenesPorProducto);
 
 // Ruta para eliminar una imagen específica (requiere id de la imagen)
 router.delete('/:imagenId', eliminarImagenProducto);

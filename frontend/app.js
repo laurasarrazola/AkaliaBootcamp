@@ -25,7 +25,7 @@ app.use('/', router);
 /*app.get('/', router);*/
 app.get('/contactanos', router);
 app.get('/productos', router);
-app.get('/producto/:id', router);
+app.get('/productos/:id', router);
 app.get('/usuario-perfil', router);
 /***********************/
 
