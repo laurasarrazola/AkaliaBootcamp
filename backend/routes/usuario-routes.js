@@ -8,6 +8,8 @@ const {
   eliminarUsuario
 } = require('../controllers/usuario-controller');
 
+const { loginUsuario } = require('../controllers/login-controller');
+
 // Ruta para obtener todos los usuarios
 router.get('/', obtenerUsuarios);
 
@@ -22,5 +24,8 @@ router.put('/:id', actualizarUsuario);
 
 // Ruta para eliminar un usuario
 router.delete('/:id', eliminarUsuario);
+
+// Ruta para el login de usuario
+router.post('/login', loginUsuario);
 
 module.exports = router;
