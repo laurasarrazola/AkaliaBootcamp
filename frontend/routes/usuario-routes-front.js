@@ -141,5 +141,32 @@ router.get("/usuario-editar-perfil/:id", async (req, res) => {
   }
 });
 
+/*****************************************
+ *   RUTA POST PARA GUARDAR LOS CAMBIOS  *
+ *****************************************/
+router.post("/usuario-editar-perfil/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nombreUsuario, apellidoUsuario, email, contrasena, telefono } = req.body;
+
+  try {
+    await axios.put(`${API_BASE_URL}/api/usuarios/${id}`, {
+      nombreUsuario,
+      apellidoUsuario,
+      email,
+      contrasena,
+      telefono,
+    });
+
+    // Redirige al perfil actualizado
+    res.redirect(`/usuario-perfil/${id}`);
+  } catch (error) {
+    console.error("Error al actualizar el usuario:", error.message);
+    res.status(500).render("pages/error", {
+      error: "Error al actualizar",
+      message: "No se pudo guardar los cambios del perfil.",
+    });
+  }
+});
+
 
 module.exports = router;

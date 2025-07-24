@@ -14,67 +14,42 @@
       <%- include('../partials/sidebar.ejs'); %>
         <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center py-5">
           <section class="usuario-perfil-card">
-            <h2 class="usuario-perfil-title">Mi Perfil</h2>
+            <h2 class="usuario-perfil-title">Editar Perfil</h2>
             <div class="usuario-perfil-info">
-              <div class="row mb-3">
-
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <strong class="usuario-perfil-label">Nombres</strong>
-                  <input type="text" class="form-control" value="<%= usuario.nombreUsuario %>">
-                  </input>
-                </div>
-
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <strong class="usuario-perfil-label">Apellido</strong>
-                  <input type="text" class="form-control" value="<%= usuario.apellidoUsuario %>">
-                  </input>
-                </div>
-
-                <div class="col-md-6">
-                  <strong class="usuario-perfil-label">Celular</strong>
-                  <input type="text" class="form-control" value="<%= usuario.telefono %>">
-                  </input>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <strong class="usuario-perfil-label">Correo</strong>
-                  <input type="email" class="form-control" value="<%= usuario.email %>">
-                  </input>
-                </div>
-
+              <form action="/usuario-editar-perfil/<%= usuario.idPersona %>" method="POST">
                 <div class="row mb-3">
                   <div class="col-md-6 mb-3 mb-md-0">
-                    <strong class="usuario-perfil-label">Contraseña</strong>
-                    <input type="password" class="form-control" value="<%= usuario.contrasena %>">
-                    </input>
+                    <strong class="usuario-perfil-label">Nombres</strong>
+                    <input name="nombreUsuario" type="text" class="form-control" value="<%= usuario.nombreUsuario %>">
                   </div>
-                </div>
 
-                <div class="row mb-4">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <strong class="usuario-perfil-label">Apellido</strong>
+                    <input name="apellidoUsuario" type="text" class="form-control"
+                      value="<%= usuario.apellidoUsuario %>">
+                  </div>
                   <div class="col-md-6">
-                    <strong class="usuario-perfil-label">Fecha de registro</strong>
-                    <input type="text" class="form-control" value="<%= usuario.fechaRegistro %>" disabled>
-                    </input>
+                    <strong class="usuario-perfil-label">Celular</strong>
+                    <input name="telefono" type="text" class="form-control" value="<%= usuario.telefono %>">
+                  </div>
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <strong class="usuario-perfil-label">Correo</strong>
+                    <input name="email" type="email" class="form-control" value="<%= usuario.email %>">
+                  </div>
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <strong class="usuario-perfil-label">Contraseña</strong>
+                    <input name="contrasena" type="password" class="form-control" value="<%= usuario.contrasena %>">
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6"></div>
-                  <div class="col-md-6 d-flex flex-column align-items-md-end gap-2">
-
-                    <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2" type="button">
-                      <img src="/img/icons/edit.svg" alt="Editar" style="width:1.2rem;"> Editar
-                    </button>
-
-                    <button class="btn btn-explorar d-flex align-items-center gap-2 px-4 usuario-perfil-eliminar"
-                      type="button">
-                      <img src="/img/icons/bin.svg" alt="Eliminar cuenta" style="width:1.2rem;"> Eliminar cuenta
-                    </button>
-                  </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2" type="submit">
+                    <img src="/img/icons/edit.svg" alt="Editar" style="width:1.2rem;"> Guardar Cambios
+                  </button>
                 </div>
-              </div>
+              </form>
+
+            </div>
           </section>
         </main>
     </div>
