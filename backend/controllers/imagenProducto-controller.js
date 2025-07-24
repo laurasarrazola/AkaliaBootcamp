@@ -3,7 +3,7 @@ const db = require('../db');
 /************************************
  * CONSULTA TODAS LAS IMÁGENES
  ************************************/
-const obtenerImagenesProducto = (req, res) => {
+const obtenerImagenes = (req, res) => {
   db.query('SELECT * FROM imagenProducto', (err, results) => {
     if (err) {
       console.error('Error al consultar imágenes:', err);
@@ -97,7 +97,7 @@ const eliminarImagenProducto = (req, res) => {
 };
 
 module.exports = {
-  obtenerImagenesProducto,
+  obtenerImagenes,
   obtenerImagenesPorProducto,
   crearImagenProducto,
   actualizarImagenProducto,

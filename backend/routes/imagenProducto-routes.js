@@ -3,11 +3,15 @@ const router = express.Router();
 const {
   crearImagenProducto,
   obtenerImagenesPorProducto,
-  eliminarImagenProducto
+  eliminarImagenProducto,
+  obtenerImagenes,
 } = require('../controllers/imagenProducto-controller');
 
 // Ruta para agregar una imagen a un producto (requiere id del producto como parámetro)
 router.post('/:id', crearImagenProducto);
+
+// Ruta para obtener todas las imágenes
+router.get('/', obtenerImagenes);
 
 // Ruta para obtener todas las imágenes de un producto
 router.get('/:id', obtenerImagenesPorProducto);

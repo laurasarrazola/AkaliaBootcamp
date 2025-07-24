@@ -25,12 +25,12 @@ const API_BASE_URL = process.env.URL_BASE || 'http://localhost:7000';
 //         });
 //     }
 // }); 
-router.get('/contactanos', async (req, res) => {
-  res.render('pages/contactanos', { title: 'Contactanos' });
-});
-router.get('/productos', async (req, res) => {
-  res.render('pages/productos', { title: 'Productos' });
-});
+
+
+
+// router.get('/productos', async (req, res) => {
+//   res.render('pages/productos', { title: 'Productos' });
+// });
 
 // router.get('/producto/:id', async (req, res) => {
 //   const id = req.params.id;

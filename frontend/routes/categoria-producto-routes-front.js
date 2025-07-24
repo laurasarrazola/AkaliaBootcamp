@@ -22,9 +22,14 @@ router.get('/', async (req, res) => {
 
     const responseP = await axios.get(`${API_BASE_URL}/api/productos`);
     const productos = responseP.data;
+    
+    const responseImagenes = await axios.get(`${API_BASE_URL}/api/imagenes-producto`);
+    const imagenes = responseImagenes.data;
+
     res.render('pages/index.ejs', {
       categorias: categorias,
       productos: productos,
+      imagenes: imagenes,
       titulo: 'Publicaciones',
     });
   } catch (error) {

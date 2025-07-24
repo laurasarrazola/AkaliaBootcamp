@@ -20,8 +20,14 @@
             <% productos.forEach(producto=> { %>
               <div onclick="showProductDetail('<%= producto.idProducto %>')" class="cursor-pointer col-10 col-sm-6 col-md-3 col-lg-3 mb-4  d-flex justify-content-center" style=" height: 350px">
                 <article class="card rounded-0 border-0 ">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZgVTFVXw06YkQvxjziFsUcd3SROPwTXN-Mg&s" 
+                  <% const img= imagenes.find(img => img.idProducto === producto.idProducto) %>
+                  <% if(img) { %>
+                  <img src="<%= img.urlImagen %>" 
                     class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" /> 
+                    <% } else { %>
+                  <img src="https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"
+                    class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" />
+                    <% } %> 
                     <!-- <%= producto.imagenProducto %> --> 
                   <div class="card-body bg-light">
                     <h5 class="card-title  mb-1 text-truncate w-100">
@@ -43,16 +49,15 @@
         </div>
       </section>
 
-      <!-- FOOTER-->
-      <%- include('../partials/footer.ejs'); %>
     </main>
+    <!-- FOOTER-->
+    <%- include('../partials/footer.ejs'); %>
     <script src="/lib/js/bootstrap.min.js.map"></script>
     <script src="/lib/js/bootstrap.bundle.min.js"></script>
     <script src="/js/productos.js"> </script>
     <script src="/js/login_signup.js"></script>
     <!-- Bootstrap + FontAwesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <!-- Script personalizado -->
 </body>
 <%- include('../partials/modal-login.ejs'); %>
   <%- include('../partials/modal-signup.ejs'); %>

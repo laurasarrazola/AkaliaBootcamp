@@ -19,9 +19,14 @@ router.get('/', async (req, res) => {
 
         const responseP = await axios.get(`${API_BASE_URL}/api/productos`);
         const productos = responseP.data;
+
+        const responseImagenes = await axios.get(`${API_BASE_URL}/api/imagenes-producto`);
+        const imagenes = responseImagenes.data;
+
         res.render('pages/productos.ejs', {
             productos: productos,
             categorias: categorias,
+            imagenes: imagenes,
             titulo: 'Publicaciones',
         });
     } catch (error) {
@@ -51,9 +56,7 @@ router.get('/:id', async (req, res) => {
         
         const responseImagenes = await axios.get(`${API_BASE_URL}/api/imagenes-producto/${producto.idProducto}`);
         const imagenes = responseImagenes.data;
-        
-        console.log('idImagenes:', imagenes);
-        
+                
         const responseEtiquetas = await axios.get(`${API_BASE_URL}/api/etiquetas/${producto.idProducto}`);
         const etiquetas = responseEtiquetas.data;
 
@@ -68,7 +71,6 @@ router.get('/:id', async (req, res) => {
             imagenes: imagenes,
             etiquetas: etiquetas,
             redSocial: redSocial,
-
             titulo: 'Publicación',
         });
     } catch (error) {
@@ -83,5 +85,3 @@ router.get('/:id', async (req, res) => {
 });
 
 module.exports = router;
-// const producto = await obtenerProducto(req.params.idProducto, res); // Asumiendo que el ID del emprendimiento es 1
-// const emprendimiento = await obtenerEmprendimiento(producto.idEmprendimiento, res); // Asumiendo que el ID del emprendimiento es 1

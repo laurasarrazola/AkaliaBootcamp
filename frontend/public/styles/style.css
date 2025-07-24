@@ -134,14 +134,14 @@ body {
   display: flex;
   width: 13.9375rem;
   padding: 0.375rem 0.5rem;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 0.625rem;
   border-radius: 0.375rem;
   background: transparent;
-  color: #651313;
+  color: var(--dark-vinotinto);
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 500;
   border: none;
   transition: border 0.2s, background 0.2s;
@@ -149,32 +149,14 @@ body {
 }
 
 .btn-option:hover {
-  border: 1px solid #470a0a; /* Vinotinto-active */
-  background: #FFE9E4;
+  border: 1px solid var(--dark-vinotinto); /* Vinotinto-active */
+  color: var(--dark-vinotinto);
 }
 
-.btn-option-active {
-  background: #651313; /* Vinotinto */
-  color: #FFF9E4;
+.btn-option:focus {
+  background: var(--dark-vinotinto); /* Vinotinto */
+  color: var(--normal-blanco);
 }
-
-.btn-option-active .sidebar-icon,
-.btn-option-active .sidebar-label {
-  color: #FFF9E4;
-  fill: #FFF9E4;
-}
-
-.btn-option-logout {
-  color: #651313;
-  background: transparent;
-}
-
-.sidebar-icon {
-  width: 2rem;
-  height: 2rem;
-  display: inline-block;
-}
-
 .sidebar-label {
   font-size: 1.2rem;
 }
@@ -198,4 +180,10 @@ body {
 
 .product-card {
   cursor: pointer;
+}
+
+/* Product Detail Page */
+.img-container {
+  max-height: 65vh;
+  overflow-y: auto;
 }

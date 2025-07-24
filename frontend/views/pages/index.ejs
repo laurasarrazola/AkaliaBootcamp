@@ -64,13 +64,19 @@
 
       <section class="container d-flex align-items-center justify-content-center flex-column gap-3">
         <h2>Productos destacados</h2>
-        <div class="row col-10 col-md-12 d-flex align-items-center justify-content-center mx-md-5">
+        <div class="row col-10 col-md-12 d-flex awlign-items-center justify-content-center mx-md-5">
           <% if (typeof productos !=='undefined' && productos.length) { %>
             <% productos.slice(0,8).forEach(producto=> { %>
               <div  class=" col-10 col-sm-6 col-md-3 col-lg-3 mb-4  d-flex justify-content-center" style=" height: 350px">
                 <article onclick="showProductDetail('<%= producto.idProducto %>')" class="product-card card rounded-0 border-0 ">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZgVTFVXw06YkQvxjziFsUcd3SROPwTXN-Mg&s" 
+                 <% const img= imagenes.find(img => img.idProducto === producto.idProducto) %>
+                  <% if(img) { %>
+                  <img src="<%= img.urlImagen %>" 
                     class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" /> 
+                    <% } else { %>
+                  <img src="https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"
+                    class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" />
+                    <% } %>
                     <!-- <%= producto.imagenProducto %> --> 
                   <div class="card-body bg-light">
                     <h5 class="card-title mb-1 text-truncate w-100">
@@ -108,7 +114,7 @@
     <!-- Script personalizado -->
 </body>
 <%- include('../partials/modal-login.ejs'); %>
-  <%- include('../partials/modal-signup.ejs'); %>
+<%- include('../partials/modal-signup.ejs'); %>
 
 
 </html>
