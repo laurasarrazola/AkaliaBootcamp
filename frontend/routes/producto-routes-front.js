@@ -62,7 +62,6 @@ router.get('/:id', async (req, res) => {
 
         const responseRedSocial = await axios.get(`${API_BASE_URL}/api/redSocial/${emprendimiento.idEmprendimiento}`);
         const redSocial = responseRedSocial.data;
-
         res.render('pages/producto.ejs', {
             producto: producto,
             categorias: categorias,

@@ -182,8 +182,24 @@ body {
   cursor: pointer;
 }
 
+.product-card img{
+  height: 20rem;
+}
+
 /* Product Detail Page */
-.img-container {
-  max-height: 65vh;
+.miniature-container {
   overflow-y: auto;
+  max-height: 38rem
+}
+
+.miniature-container img{
+  width: 5rem;
+  height: 5rem;
+}
+.img-principal img{
+  max-height: 38rem;
+}
+ 
+.imgs-container {
+  max-height: 40rem;
 }

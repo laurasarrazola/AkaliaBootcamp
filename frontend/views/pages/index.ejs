@@ -13,7 +13,7 @@
 <body>
   <%- include('../partials/navbar.ejs'); %>
     <main>
-      
+
       <section>
         <!-- Banner principal -->
         <div class="akalia-banner" style="background-image: url('/img/imgs/banner.svg');">
@@ -27,11 +27,11 @@
           </div>
           <div class="col-11  d-flex flex-column align-items-end justify-content-end mb-5 ">
             <div class="d-flex align-items-center akalia-banner-register gap-2  p-3 rounded-2">
-            <span class=" fst-italic fs-6">¿Quieres dar a conocer tu arte?</span>
+              <span class=" fst-italic fs-6">¿Quieres dar a conocer tu arte?</span>
 
-            <button class="btn btn-terracota" data-bs-toggle="modal"
-              data-bs-target="#registerModal">Registrarse</button>
-          </div>
+              <button class="btn btn-terracota" data-bs-toggle="modal"
+                data-bs-target="#registerModal">Registrarse</button>
+            </div>
           </div>
         </div>
       </section>
@@ -40,12 +40,13 @@
         <div class="container d-flex align-items-center justify-content-center flex-column gap-3">
           <h4>Elige una categoría y encuentra piezas auténticas con historia</h4>
           <h1 class="text-center text-negro">Explora las categorías</h1>
-          <div class="row col-12 d-flex align-items-center justify-content-center ">
+          <div class=" col-12 d-flex align-items-center justify-content-center flex-wrap ">
             <% if (typeof categorias !=='undefined' && categorias.length) { %>
-              <% categorias.forEach(categoria => { %>
+              <% categorias.forEach(categoria=> { %>
                 <div class="card-container col-4 col-md-4 mb-4 ">
                   <div class="card border-0 gap-3 py-3">
-                    <img src="<%= categoria.imagenCategoria %>" class="card-img-top img-fluid h-100 object-fit-cover rounded card-img-fixed"
+                    <img src="<%= categoria.imagenCategoria %>"
+                      class="card-img-top img-fluid h-100 object-fit-cover rounded card-img-fixed"
                       alt="<%= categoria.nombreCategoria %>">
                     <div class="card-body p-0">
                       <h5 class="card-title fw-bold d-none d-sm-block ">
@@ -62,33 +63,30 @@
         </div>
       </section>
 
-      <section class="container d-flex align-items-center justify-content-center flex-column gap-3">
+      <section class="container py-5 d-flex flex-column align-items-center justify-content-center gap-3">
         <h2>Productos destacados</h2>
-        <div class="row col-10 col-md-12 d-flex awlign-items-center justify-content-center mx-md-5">
+        <div class="row col-12 justify-content-center mx-md-5 my-3 flex-wrap">
           <% if (typeof productos !=='undefined' && productos.length) { %>
             <% productos.slice(0,8).forEach(producto=> { %>
-              <div  class=" col-10 col-sm-6 col-md-3 col-lg-3 mb-4  d-flex justify-content-center" style=" height: 350px">
-                <article onclick="showProductDetail('<%= producto.idProducto %>')" class="product-card card rounded-0 border-0 ">
-                 <% const img= imagenes.find(img => img.idProducto === producto.idProducto) %>
-                  <% if(img) { %>
-                  <img src="<%= img.urlImagen %>" 
-                    class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" /> 
-                    <% } else { %>
-                  <img src="https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg"
-                    class="card-img-top img-fluid h-100 object-fit-cover rounded-0" alt="<%= producto.nombreProducto %>" />
-                    <% } %>
-                    <!-- <%= producto.imagenProducto %> --> 
-                  <div class="card-body bg-light">
-                    <h5 class="card-title mb-1 text-truncate w-100">
-                      <%= producto.tituloProducto %>
-                    </h5>
-                    <p class="card-text text-muted mb-2 text-truncate w-100">
-                      <%= producto.descripcionProducto %>
-                    </p>
-                    <p class="fw-semibold text-dark mb-0">
-                      <%= producto.precio %>
-                    </p>
-                  </div>
+              <div class=" col-10 col-sm-6  col-lg-3 mb-4 px-3 d-flex justify-content-center">
+                <article onclick="showProductDetail('<%= producto.idProducto %>')"
+                  class="product-card card rounded-0 border-0 w-100">
+                  <% const img=imagenes.find(img=> img.idProducto === producto.idProducto) %>
+                    <img class="card-img-top img-fluid  object-fit-cover rounded-0"
+                      src="<%= img ? img.urlImagen : 'https://img.freepik.com/vector-premium/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg' %>"
+                      />
+                      <!-- <%=producto.imagenProducto %> -->
+                    <div class="card-body bg-light">
+                      <h5 class="card-title mb-1 text-truncate w-100">
+                        <%= producto.tituloProducto %>
+                      </h5>
+                      <p class="card-text text-muted mb-2 text-truncate w-100">
+                        <%= producto.descripcionProducto %>
+                      </p>
+                      <p class="fw-semibold text-dark mb-0">
+                        <%= producto.precio %>
+                      </p>
+                    </div>
                 </article>
               </div>
               <% }); %>
@@ -96,12 +94,14 @@
                   <li><span>Sin productos</span></li>
                   <% } %>
         </div>
+        <div class="d-flex align-items-center justify-content-center w-100 mt-2">
+          <button onclick="showListProducts()"
+            class="btn btn-basic d-flex align-items-center justify-content-center  w-50">
+            Ver todos los productos</button>
+        </div>
       </section>
 
-      <div class="d-flex align-items-center justify-content-center flex-column gap-3 w-100">
-        <button onclick="showListProducts()" class="btn btn-basic d-flex align-items-center justify-content-center gap-2 px-4 mb-5 w-50">
-        Ver todos los productos</button>
-    </div>
+
       <!-- FOOTER-->
       <%- include('../partials/footer.ejs'); %>
     </main>
@@ -114,7 +114,7 @@
     <!-- Script personalizado -->
 </body>
 <%- include('../partials/modal-login.ejs'); %>
-<%- include('../partials/modal-signup.ejs'); %>
+  <%- include('../partials/modal-signup.ejs'); %>
 
 
 </html>
