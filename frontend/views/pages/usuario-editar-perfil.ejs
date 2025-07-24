@@ -52,33 +52,29 @@
                   </div>
                 </div>
 
-                <div class="col-md-6">
-                  <strong class="usuario-perfil-label">Contraseña</strong>
-                  <%= usuario.contrasena %>
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <strong class="usuario-perfil-label">Fecha de registro</strong>
+                    <input type="text" class="form-control" value="<%= usuario.fechaRegistro %>" disabled>
+                    </input>
+                  </div>
                 </div>
-              </div>
 
-              <div class="row mb-4">
-                <div class="col-md-6">
-                  <strong class="usuario-perfil-label">Fecha de registro</strong>
-                  <div>
-                    <%= usuario.fechaRegistro %>
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6 d-flex flex-column align-items-md-end gap-2">
+
+                    <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2" type="button">
+                      <img src="/img/icons/edit.svg" alt="Editar" style="width:1.2rem;"> Editar
+                    </button>
+
+                    <button class="btn btn-explorar d-flex align-items-center gap-2 px-4 usuario-perfil-eliminar"
+                      type="button">
+                      <img src="/img/icons/bin.svg" alt="Eliminar cuenta" style="width:1.2rem;"> Eliminar cuenta
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6 d-flex flex-column align-items-md-end gap-2">
-                  <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2" type="button">
-                    <img src="/img/icons/edit.svg" alt="Editar" style="width:1.2rem;"> Editar
-                  </button>
-                  <button class="btn btn-explorar d-flex align-items-center gap-2 px-4 usuario-perfil-eliminar"
-                    type="button">
-                    <img src="/img/icons/bin.svg" alt="Eliminar cuenta" style="width:1.2rem;"> Eliminar cuenta
-                  </button>
-                </div>
-              </div>
-            </div>
           </section>
         </main>
     </div>

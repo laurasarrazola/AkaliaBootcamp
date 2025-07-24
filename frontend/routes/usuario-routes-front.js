@@ -122,4 +122,24 @@ router.get("/usuario-perfil/:id", async (req, res) => {
   }
 });
 
+/*****************************************
+ *       RUTA GET EDITAR PERFIL USUARIO  *
+ *****************************************/
+router.get("/usuario-editar-perfil/:id", async (req, res) => {
+  try {
+    const usuario = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.id}`);
+    return res.status(200).render("pages/usuario-editar-perfil", {
+      usuario: usuario.data,
+      title: "Editar Perfil"
+    });
+  } catch (error) {
+    console.error("Error al obtener usuario para editar:", error.message);
+    return res.status(500).render("pages/error", {
+      error: 'Error del servidor',
+      message: 'No se pudo cargar la vista de edición de perfil.',
+    });
+  }
+});
+
+
 module.exports = router;

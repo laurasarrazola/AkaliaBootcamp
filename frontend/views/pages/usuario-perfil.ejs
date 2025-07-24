@@ -20,9 +20,10 @@
                 <div class="col-md-6 mb-3 mb-md-0">
                   <strong class="usuario-perfil-label">Nombres y apellido</strong>
                   <div>
-                    <%= usuario.nombreUsuario %> <%= usuario.apellidoUsuario %>
+                    <%= usuario.nombreUsuario %>
+                      <%= usuario.apellidoUsuario %>
                   </div>
-                  
+
                 </div>
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Celular</strong>
@@ -40,7 +41,9 @@
                 </div>
                 <div class="col-md-6">
                   <strong class="usuario-perfil-label">Contraseña</strong>
-                  <div><%= usuario.contrasena %></div>
+                  <div>
+                    <%= usuario.contrasena %>
+                  </div>
                 </div>
               </div>
               <div class="row mb-4">
@@ -54,9 +57,12 @@
               <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6 d-flex flex-column align-items-md-end gap-2">
-                  <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2" type="button">
+
+                  <button id="btnEditarPerfil" class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2"
+                    type="button" data-id="<%= usuario.idPersona %>">
                     <img src="/img/icons/edit.svg" alt="Editar" style="width:1.2rem;"> Editar
                   </button>
+
                   <button class="btn btn-explorar d-flex align-items-center gap-2 px-4 usuario-perfil-eliminar"
                     type="button">
                     <img src="/img/icons/bin.svg" alt="Eliminar cuenta" style="width:1.2rem;"> Eliminar cuenta
@@ -68,6 +74,7 @@
         </main>
     </div>
     <%- include('../partials/footer.ejs'); %>
+      <script src="/js/perfilUsuario.js"></script>
 </body>
 
 </html>
