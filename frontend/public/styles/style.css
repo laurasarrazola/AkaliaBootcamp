@@ -118,16 +118,13 @@ body {
 
 /*  SIDEBAR */
 
-/* Agrega esto a tu archivo de estilos, por ejemplo, style.css */
 .akalia-sidebar {
   background: #FFDAD7;
-  height: 100vh;
+  height: 85vh;
   width: 15rem;
+  
   min-width: 13.9375rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  
 }
 
 .btn-option {
