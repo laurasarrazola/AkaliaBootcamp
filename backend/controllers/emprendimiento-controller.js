@@ -31,6 +31,97 @@ const obtenerEmprendimientoPorId = (req, res) => {
 };
 
 /************************************
+ * CONSULTA EMPRENDIMIENTO POR ID USUARIO
+ ************************************/
+const obtenerEmprendimientoPorIdUsuario = (req, res) => {
+  const idUsuario = req.params.id;
+  console.log('Consultando emprendimiento para el request con ID:', req.params);
+  console.log('Consultando emprendimientos para el usuario con ID:', idUsuario);
+  db.query(`
+    SELECT e.* 
+    FROM emprendimiento e
+    JOIN usuario u ON e.idPersona = u.idPersona
+    WHERE u.idPersona = ?
+  `, [idUsuario], (err, results) => {
+    if (err) {
+      console.error('Error al buscar emprendimientos:', err);
+      return res.status(500).json({ error: 'Error en la base de datos' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Emprendimientos no encontrado' });
+    }
+    res.status(200).json(results);
+  });
+};
+/************************************
+ * CONSULTA EMPRENDIMIENTO CON REDES SOCIALES
+ ************************************/
+const obtenerEmprendimientosConRedes = (req, res) => {
+  const idUsuario = req.params.id;
+  const query = `
+  SELECT 
+  e.idEmprendimiento,
+  e.nombreEmprendimiento,
+  e.imagenLogo,
+  e.descripcionNegocio,
+  e.fechaRegistro,
+  rs.idRedSocial,
+  rs.nombreRedSocial,
+  rs.url
+  FROM usuario u
+  JOIN emprendimiento e ON e.idPersona = u.idPersona
+  LEFT JOIN redsocial rs ON rs.idEmprendimiento = e.idEmprendimiento
+  WHERE u.idPersona = ?
+  `;
+  
+  db.query(query, [idUsuario], (err, results) => {
+    if (err) {
+      console.error("Error al obtener emprendimientos:", err);
+      return res.status(500).json({ error: "Error al obtener datos" });
+    }
+    
+    // Agrupar emprendimientos con sus redes sociales
+    const emprendimientosMap = {};
+    
+    results.forEach(row => {
+      const {
+        idEmprendimiento,
+        nombreEmprendimiento,
+        imagenLogo,
+        descripcionNegocio,
+        fechaRegistro,
+        idRedSocial,
+        nombreRedSocial,
+        url
+      } = row;
+      
+      if (!emprendimientosMap[idEmprendimiento]) {
+        emprendimientosMap[idEmprendimiento] = {
+          idEmprendimiento,
+          nombreEmprendimiento,
+          imagenLogo,
+          descripcionNegocio,
+          fechaRegistro,
+          redesSociales: []
+        };
+      }
+      
+      if (idRedSocial) {
+        emprendimientosMap[idEmprendimiento].redesSociales.push(
+          {
+          idRedSocial,
+          nombreRedSocial,
+          url
+        });
+      }
+    });
+    const emprendimientos = Object.values(emprendimientosMap);
+    res.json(emprendimientos);
+  });
+};
+
+
+/************************************
  * INSERCIÓN NUEVO EMPRENDIMIENTO
  ************************************/
 const crearEmprendimiento = (req, res) => {
@@ -109,5 +200,7 @@ module.exports = {
   obtenerEmprendimientoPorId,
   crearEmprendimiento,
   actualizarEmprendimiento,
-  eliminarEmprendimiento
+  eliminarEmprendimiento,
+  obtenerEmprendimientoPorIdUsuario,
+  obtenerEmprendimientosConRedes
 };

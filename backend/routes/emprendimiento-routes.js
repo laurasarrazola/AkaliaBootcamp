@@ -5,11 +5,19 @@ const {
   obtenerEmprendimientoPorId,
   crearEmprendimiento,
   actualizarEmprendimiento,
-  eliminarEmprendimiento
+  eliminarEmprendimiento,
+  obtenerEmprendimientoPorIdUsuario,
+  obtenerEmprendimientosConRedes
 } = require('../controllers/emprendimiento-controller');
 
 // Ruta para obtener todos los emprendimientos
 router.get('/', obtenerEmprendimientos);
+
+// Ruta para obtener emprendimiento por ID usuario
+router.get('/usuario/:id', obtenerEmprendimientoPorIdUsuario);
+
+// Ruta para obtener emprendimiento por ID usuario
+router.get('/redes/:id', obtenerEmprendimientosConRedes);
 
 // Ruta para obtener emprendimiento por ID
 router.get('/:id', obtenerEmprendimientoPorId);

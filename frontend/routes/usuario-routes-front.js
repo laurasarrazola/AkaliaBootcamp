@@ -109,9 +109,13 @@ router.get('/usuarios', async (req, res) => {
 router.get("/usuario-perfil/:id", async (req, res) => {
   try {
     const usuario = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.id}`);
-    console.log("Usuario obtenido:", usuario.data);
+
+    const responseC = await axios.get(`${API_BASE_URL}/api/categorias`);
+    const categorias = responseC.data;
+
     return res.status(200).render("pages/usuario-perfil", {
       usuario: usuario.data,
+      categorias: categorias
     });
   } catch (error) {
     console.error('Error al obtener el perfil del usuario:', error.message);

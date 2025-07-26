@@ -83,4 +83,35 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/usuario-productos/:id', async (req, res) => {
+    console.log(req.params.id)
+    try {
+        const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.id}`);
+        const productos = responseP.data;
+
+        const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.id}`);
+        const usuario = resU.data;
+        console.log(productos)
+        const responseC = await axios.get(`${API_BASE_URL}/api/categorias`);
+        const categorias = responseC.data;
+        
+
+        res.render('pages/usuario-productos.ejs', {
+            productos: productos,
+            usuario: usuario,
+            categorias: categorias,
+
+            titulo: 'Lista productos',
+        });
+    } catch (error) {
+        console.error('Error al obtener los productos:', error.message);
+
+        //Renderizar pagina de error
+        res.status(500).render('error', {
+            error: 'Error del servidor',
+            message: 'No se pudieron cargar los productos. Verifica que el backend esté funcionando.',
+        });
+    }
+});
+
 module.exports = router;

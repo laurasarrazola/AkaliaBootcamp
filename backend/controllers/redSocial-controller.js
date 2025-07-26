@@ -39,7 +39,7 @@ const obtenerRedesSocialesPorUsuario = (req, res) => {
  ************************************/
 const obtenerRedesSocialesPorEmprendimiento = (req, res) => {
   const idEmprendimiento = req.params.idEmprendimiento;
-
+  console.log('Consultando redes sociales para el emprendimiento con ID:', idEmprendimiento);
   db.query('SELECT * FROM redSocial WHERE idEmprendimiento = ?', [idEmprendimiento], (err, results) => {
     if (err) {
       console.error('Error al buscar red social:', err);
@@ -53,6 +53,8 @@ const obtenerRedesSocialesPorEmprendimiento = (req, res) => {
     res.status(200).json(results);
   });
 };
+
+
 /************************************
  *    INSERCIÓN NUEVA RED SOCIAL
  ************************************/

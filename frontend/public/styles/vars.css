@@ -169,9 +169,15 @@
 .btn-basic:hover {
   background-color:var(--hover-blanco);
     color: var(--normal-vinotinto);
-      border: 0.5px solid var(--normal-vinotinto);
+border: 0.5px solid var(--normal-vinotinto);
 
-
+}
+.btn-disable, .btn-disable:hover, .btn-disable:focus {
+border-radius: 0.5rem;
+background: var(--normal-lights-verde-light);
+color: var(--normal-lights-verde-disable);
+text-align: center;
+font-weight: 400;
 }
 
 .btn-terracota {

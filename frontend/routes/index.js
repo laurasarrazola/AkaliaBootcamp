@@ -7,6 +7,7 @@ const usuarioRoutes = require('./usuario-routes-front');
 const productoRoutes = require('./producto-routes-front');
 const authRoutes = require('./usuario-routes-front');
 const contactanosRoutes = require('./contactanos-routes-front');
+const emprendimientoRoutes = require('./emprendimienos-routes-front');
 
 router.use('/', categoriaProductoRoutes);
 router.use('/', usuarioRoutes);
@@ -16,4 +17,5 @@ router.use('/', authRoutes)
 router.use('/contactanos', contactanosRoutes);
 router.use('/productos', productoRoutes);
 
+router.use('/', emprendimientoRoutes);
 module.exports = router;

@@ -1,3 +1,7 @@
+* {
+  font-family:  var(--texto-descriptivo-font-family);
+}
+
 .usuario-perfil-card {
   max-width: 950px;
   width: 100%;
@@ -19,9 +23,11 @@
 
 .usuario-perfil-info {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 0.75rem;
   padding: 2rem 2rem 1.5rem 2rem;
-  border: 1px solid #e6e3d7;
+  border: 1px solid var(--normal-lights-verde-light);
+  box-shadow: 1px 4px 4px 0px rgba(0, 0, 0, 0.20);
+ 
 }
 
 .usuario-perfil-label {
@@ -49,4 +55,76 @@
   .usuario-perfil-title {
     font-size: 1.5rem;
   }
+}
+
+/* === Tabla de productos Akalia === */
+
+.tabla-productos {
+  padding: 2rem;
+}
+
+.filtros-productos .btn {
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: none;
+}
+
+.filtro-activo {
+  background-color: var(--normal-verde);
+  color: white;
+}
+
+.filtro-inactivo {
+  background-color: var(--normal-lights-blanco-light);
+  color: #1c1c1c;
+  border: 1px solid var(--normal-lights-gray);
+}
+
+.tabla-akalia thead {
+  background-color: var(--normal-lights-blanco-light);
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tabla-akalia td,
+.tabla-akalia th {
+  vertical-align: middle;
+  padding: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+.tabla-akalia tbody tr {
+  border-top: 1px solid #e6e3d7;
+}
+
+.img-producto {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.acciones-producto {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-icon {
+  background-color: var(--normal-lights-blanco-light);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--normal-negro);
+  font-size: 1rem;
+}
+
+.btn-icon.eliminar {
+  background-color: #E6E3D7;
+  color: var(--dark-vinotinto);
+  border: 1px solid #b9b9b9;
 }

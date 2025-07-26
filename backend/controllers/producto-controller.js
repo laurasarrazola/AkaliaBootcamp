@@ -31,6 +31,44 @@ const obtenerProductoPorId = (req, res) => {
 };
 
 /************************************
+ * CONSULTA TODOS LOS PRODUCTOS POR ID USUARIO
+ ************************************/
+const obtenerProductosConUsuarios = (req, res) => {
+  const idUsuario = req.params.id;
+  const query = `
+SELECT 
+  e.idEmprendimiento,
+  e.nombreEmprendimiento,
+  p.idProducto,
+  p.tituloProducto,
+  p.descripcionProducto,
+  p.precio,
+  p.fechaPublicacion,
+  (
+    SELECT i.urlImagen
+    FROM imagenproducto i
+    WHERE i.idProducto = p.idProducto
+    LIMIT 1
+  ) AS urlImagen
+FROM usuario u
+JOIN emprendimiento e ON e.idPersona = u.idPersona
+JOIN producto p ON p.idEmprendimiento = e.idEmprendimiento
+WHERE u.idPersona = ?;
+  `;
+  
+  db.query(query, [idUsuario], (err, results) => {
+    if (err) {
+      console.error("Error al obtener productos:", err);
+      return res.status(500).json({ error: "Error al obtener datos" });
+    }
+     if (results.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron categorías para este producto' });
+    }
+    
+    res.json(results);
+  });
+};
+/************************************
  *     INSERCIÓN NUEVO PRODUCTO
  ************************************/
 const crearProducto = (req, res) => {
@@ -105,6 +143,7 @@ const eliminarProducto = (req, res) => {
 module.exports = {
   obtenerProductos,
   obtenerProductoPorId,
+  obtenerProductosConUsuarios,
   crearProducto,
   actualizarProducto,
   eliminarProducto

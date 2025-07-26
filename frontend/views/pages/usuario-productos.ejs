@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Emprendimientos | Akalia</title>
+    <%- include('../partials/head.ejs'); %>
+        <link rel="stylesheet" href="/styles/usuario-perfil.css"><!-- Crea este archivo para estilos personalizados -->
+</head>
+
+<body class="d-flex flex-column min-vh-100 m-0 bg-blanco-light">
+    <%- include('../partials/navbar.ejs'); %>
+        <div class="layout d-flex">
+            <%- include('../partials/sidebar.ejs'); %>
+                <main class="flex-grow-1 d-flex flex-column justify-content-center align-content-center py-5">
+                    <section class="usuario-perfil-card tabla-productos">
+                        <header class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h2 class="usuario-perfil-title m-0">Mis Productos</h2>
+                            <button class="btn btn-terracota">+ Nuevo Producto</button>
+                        </header>
+
+                        <nav class="filtros-productos d-flex gap-3 mb-3 flex-wrap">
+                            <button class="btn filtro-activo">Publicado</button>
+                            <button class="btn filtro-inactivo">Inactivo</button>
+                        </nav>
+
+                        <div class="table-responsive">
+                            <table class="table tabla-akalia align-middle text-center m-0">
+                                <thead>
+                                    <tr>
+                                        <th>imagen</th>
+                                        <th>título</th>
+                                        <th>emprendimiento</th>
+                                        <th>precio</th>
+                                        <th>estado</th>
+                                        <th>acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% productos.forEach(producto=> { %>
+                                        <tr>
+                                            <td>
+                                                <img src="<%= producto.imagen %>" alt="Imagen del producto"
+                                                    class="img-producto" />
+                                            </td>
+                                            <td>
+                                                <%= producto.titulo %>
+                                            </td>
+                                            <td>
+                                                <%= producto.emprendimiento %>
+                                            </td>
+                                            <td>$<%= producto.precio %>
+                                            </td>
+                                            <td>
+                                                <%= producto.estado %>
+                                            </td>
+                                            <td>
+                                                <div class="acciones-producto">
+                                                    <button class="btn-icon" title="Ver"><i
+                                                            class="fas fa-eye"></i></button>
+                                                    <button class="btn-icon" title="Editar"><i
+                                                            class="fas fa-pen"></i></button>
+                                                    <button class="btn-icon eliminar" title="Eliminar"><i
+                                                            class="fas fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+
+                </main>
+        </div>
+        <%- include('../partials/footer.ejs'); %>
+            <script src="/js/perfilUsuario.js"></script>
+            <script src="/lib/js/bootstrap.min.js.map"></script>
+            <script src="/lib/js/bootstrap.bundle.min.js"></script>
+            <script src="/js/login_signup.js"></script>
+            <!-- Bootstrap + FontAwesome -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+
+</html>

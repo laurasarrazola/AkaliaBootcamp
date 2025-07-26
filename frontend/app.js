@@ -27,6 +27,9 @@ app.get('/contactanos', router);
 app.get('/productos', router);
 app.get('/productos/:id', router);
 app.get('/usuario-perfil', router);
+
+app.get('/usuario-productos', router)
+app.get('/usuario-emprendimientos', router);
 /***********************/
 
 // Middleware para manejar rutas no encontradas (404)
