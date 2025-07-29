@@ -1,0 +1,38 @@
+<%- include('../partials/head.ejs'); %>
+
+  <body class="bg-blanco-light">
+    <%- include('../partials/navbar.ejs'); %>
+
+      <main class="container py-5">
+        <h2 class="mb-4">Agregar nuevo emprendimiento</h2>
+
+        <!-- Modal o formulario para crear nuevo emprendimiento -->
+        <form id="formNuevoEmprendimiento" method="POST" action="/usuario-agregar-emprendimiento">
+
+          <input type="hidden" name="idPersona" value="<%= idPersona %>">
+
+          <div class="mb-3">
+            <label for="nombreEmprendimiento" class="form-label">Nombre del Emprendimiento</label>
+            <input type="text" class="form-control" name="nombreEmprendimiento" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="imagenLogo" class="form-label">URL del Logo</label>
+            <input type="text" class="form-control" name="imagenLogo">
+          </div>
+
+          <div class="mb-3">
+            <label for="descripcionNegocio" class="form-label">Descripción del negocio</label>
+            <input type="text" class="form-control" name="descripcionNegocio" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+
+      </main>
+
+      <script src="/js/perfilEmprendimiento.js"></script>
+  </body>
+
+  </html>

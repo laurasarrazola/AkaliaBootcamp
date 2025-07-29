@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    <%= titulo %> | Akalia
+  </title>
+  <link rel="stylesheet" href="/styles/usuario-perfil.css">
+  <%- include('../partials/head.ejs'); %>
+
+</head>
+
+<body>
+  <%- include('../partials/navbar.ejs'); %>
+
+    <main class="container py-5">
+      <h2>Editar Emprendimiento</h2>
+      <form id="form-editar-emprendimiento">
+
+        <input type="hidden" id="idPersona" value="<%= emprendimiento.idPersona %>">
+        <input type="hidden" id="fechaRegistro"
+          value="<%= emprendimiento.fechaRegistro.toISOString ? emprendimiento.fechaRegistro.toISOString().split('T')[0] : emprendimiento.fechaRegistro %>">
+
+        <input type="hidden" id="idEmprendimiento" value="<%= emprendimiento.idEmprendimiento %>">
+
+        <div class="mb-3">
+          <label for="nombreEmprendimiento" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombreEmprendimiento" name="nombreEmprendimiento"
+            value="<%= emprendimiento.nombreEmprendimiento %>" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="imagenLogo" class="form-label">Logo (URL)</label>
+          <input type="text" class="form-control" id="imagenLogo" name="imagenLogo"
+            value="<%= emprendimiento.imagenLogo %>">
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcionNegocio" class="form-label">Descripción</label>
+          <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="4"
+            required><%= emprendimiento.descripcionNegocio %></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="/usuario-emprendimientos/<%= emprendimiento.idPersona %>" class="btn btn-secondary">Cancelar</a>
+      </form>
+    </main>
+
+    <script src="/js/perfilEmprendimiento.js"></script>
+    <script src="/lib/js/bootstrap.min.js.map"></script>
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/login_signup.js"></script>
+    <!-- Bootstrap + FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+
+</html>
