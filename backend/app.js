@@ -3,13 +3,14 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000; // Puerto para Express, no para MySQL
 
+const path = require('path');
 /******************************
  *CONFIGURACIÓN DE MIDDLEWARES*
  ******************************/
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 /****************************
  *     MONTAJE DE RUTAS     *
  ****************************/

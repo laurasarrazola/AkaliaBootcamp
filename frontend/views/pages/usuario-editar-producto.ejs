@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar producto | Akalia</title>
+    <%- include('../partials/head.ejs'); %>
+        <link rel="stylesheet" href="/styles/usuario-perfil.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+</head>
+
+<body class="h-100 m-0 d-flex flex-column vh-100 bg-blanco-light">
+    <%- include('../partials/navbar.ejs'); %>
+        <div class="d-flex flex-row h-100">
+            <%- include('../partials/sidebar.ejs'); %>
+                <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center py-5">
+                    <section class="usuario-perfil-card overflow-scroll">
+                        <h2 class="usuario-perfil-title">Editar Producto</h2>
+                        <div class="usuario-perfil-info">
+                            <form
+                                action="http://localhost:3000/api/productos/usuario-productos/<%= usuario.idPersona %>/editar/<%= producto.idProducto %>"
+                                method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="titulo" class="form-label usuario-perfil-label">Título del
+                                        producto</label>
+                                    <input type="text" name="tituloProducto" id="titulo" class="form-control"
+                                        value="<%= producto.tituloProducto %>" required>
+                                        
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label usuario-perfil-label">Imágenes actuales</label>
+                                    <ul id="thumbnails" class="thumbnails">
+                                        <% imagenes.forEach(function(img) { %>
+                                            <li class="thumbnail-img">
+                                                <img src="<%= img.urlImagen %>" class="img-thumbnail" alt="">
+                                            </li>
+                                            <% }) %>
+
+                                    </ul>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imagenes" class="form-label usuario-perfil-label">Imágenes
+                                        nuevas</label>
+                                    <input type="file" name="imagenes" id="imagenes" class="form-control" multiple
+                                        accept="image/*">
+                                    <small class="text-muted">Puedes seleccionar varias imágenes. Las anteriores se
+                                        reemplazarán.</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label usuario-perfil-label">Descripción</label>
+                                    <textarea name="descripcionProducto" id="descripcion" class="form-control" rows="4"
+                                        required><%= producto.descripcionProducto %></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="precio" class="form-label usuario-perfil-label">Precio</label>
+                                    <input type="number" name="precio" id="precio" class="form-control"
+                                        value="<%= producto.precio %>" required step="0.01" min="0">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="emprendimiento"
+                                        class="form-label usuario-perfil-label">Emprendimiento</label>
+                                    <select name="idEmprendimiento" id="emprendimiento" class="form-select" required>
+                                        <% emprendimientos.forEach(emp=> { %>
+                                            <option value="<%= emp.idEmprendimiento %>"
+                                                <%=emp.idEmprendimiento===producto.idEmprendimiento ? 'selected' : '' %>
+                                                >
+                                                <%= emp.nombreEmprendimiento %>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label usuario-perfil-label">Categorías</label>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <% categorias.forEach(cat=> { %>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="categorias[]"
+                                                    value="<%= cat.idCategoria %>"
+                                                    <%=categoriasSeleccionadas.includes(cat.idCategoria) ? 'checked'
+                                                    : '' %>>
+                                                <label class="form-check-label">
+                                                    <%= cat.nombreCategoria %>
+                                                </label>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label usuario-perfil-label">Etiquetas</label>
+                                    <div class="d-flex flex-wrap gap-2">
+
+                                        <div class="form-check">
+
+                                            <!-- Etiquetas -->
+                                            <input name="tags-outside" class="tagify--outside" id="etiquetasTagify"
+                                                placeholder="Escribe etiquetas..."
+                                                data-etiquetas='<%= JSON.stringify(etiquetas) %>'
+                                                data-etiquetas-seleccionadas='<%= JSON.stringify(etiquetasSeleccionadas) %>' />
+                                            <small class="text-danger d-none" id="etiquetas-alerta">Máximo 10 etiquetas
+                                                permitidas</small>
+                                                <input type="hidden" name="etiquetas" id="etiquetasHidden">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-terracota d-flex align-items-center gap-2 px-4 mb-2"
+                                        type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 28 28" fill="none">
+                                            <path d="M19.25 3.5H15.75V8.75H19.25V3.5Z" fill="currentColor" />
+                                            <path
+                                                d="M2.625 0H22.9005C23.5965 0.000612682 24.2637 0.277576 24.7555 0.77L27.2318 3.2445C27.7235 3.7366 27.9999 4.40379 28 5.0995V25.375C28 26.0712 27.7234 26.7389 27.2312 27.2312C26.7389 27.7234 26.0712 28 25.375 28H2.625C1.92881 28 1.26113 27.7234 0.768845 27.2312C0.276562 26.7389 0 26.0712 0 25.375L0 2.625C0 1.92881 0.276562 1.26113 0.768845 0.768845C1.26113 0.276562 1.92881 0 2.625 0ZM1.75 2.625V25.375C1.75 25.6071 1.84219 25.8296 2.00628 25.9937C2.17038 26.1578 2.39294 26.25 2.625 26.25H3.5V18.375C3.5 17.6788 3.77656 17.0111 4.26884 16.5188C4.76113 16.0266 5.42881 15.75 6.125 15.75H21.875C22.5712 15.75 23.2389 16.0266 23.7312 16.5188C24.2234 17.0111 24.5 17.6788 24.5 18.375V26.25H25.375C25.6071 26.25 25.8296 26.1578 25.9937 25.9937C26.1578 25.8296 26.25 25.6071 26.25 25.375V5.0995C26.25 4.86788 26.1581 4.64573 25.9945 4.48175L23.5182 2.0055C23.3543 1.84193 23.1321 1.75005 22.9005 1.75H22.75V9.625C22.75 10.3212 22.4734 10.9889 21.9812 11.4812C21.4889 11.9734 20.8212 12.25 20.125 12.25H7.875C7.17881 12.25 6.51113 11.9734 6.01884 11.4812C5.52656 10.9889 5.25 10.3212 5.25 9.625V1.75H2.625C2.39294 1.75 2.17038 1.84219 2.00628 2.00628C1.84219 2.17038 1.75 2.39294 1.75 2.625ZM7 9.625C7 9.85706 7.09219 10.0796 7.25628 10.2437C7.42038 10.4078 7.64294 10.5 7.875 10.5H20.125C20.3571 10.5 20.5796 10.4078 20.7437 10.2437C20.9078 10.0796 21 9.85706 21 9.625V1.75H7V9.625ZM5.25 26.25H22.75V18.375C22.75 18.1429 22.6578 17.9204 22.4937 17.7563C22.3296 17.5922 22.1071 17.5 21.875 17.5H6.125C5.89294 17.5 5.67038 17.5922 5.50628 17.7563C5.34219 17.9204 5.25 18.1429 5.25 18.375V26.25Z"
+                                                fill="currentColor" />
+                                        </svg> Guardar Cambios
+                                    </button>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </section>
+                </main>
+        </div>
+
+        <script src="/lib/js/bootstrap.min.js.map"></script>
+        <script src="/lib/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/perfilUsuario.js"></script>
+        <script src="/js/tagify.js"></script>
+
+        <!-- Bootstrap + FontAwesome -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+        <!-- Tagify JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+
+
+</body>
+<%- include('../partials/footer.ejs'); %>
+
+</html>

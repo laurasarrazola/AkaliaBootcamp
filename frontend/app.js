@@ -14,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(express.urlencoded({ extended: true })); // Para procesar datos de formularios
 app.use(express.json());
 
@@ -26,10 +27,12 @@ app.use('/', router);
 app.get('/contactanos', router);
 app.get('/productos', router);
 app.get('/productos/:id', router);
+
 app.get('/usuario-perfil', router);
 
-app.get('/usuario-productos', router)
+
 app.get('/usuario-emprendimientos', router);
+app.get('/',router)
 /***********************/
 
 // Middleware para manejar rutas no encontradas (404)

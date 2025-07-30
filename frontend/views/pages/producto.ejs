@@ -13,19 +13,31 @@
             <div
                 class="row product-container bg-blanco-light rounded shadow-sm  d-flex justify-content-center mx-auto gap-3">
                 <div
-                    class="container row col-12 col-md-7 d-flex align-items-center justify-content-center  imgs-container">
-                    <!-- Miniaturas -->
-                    <div class="miniature-container col-2 d-flex flex-column align-items-center gap-2">
-                        <% imagenes.forEach(function(img, i) { %>
-                            <img src="<%= img.urlImagen %>" class="img-thumbnail mb-2" alt="Miniatura <%= i+1 %>">
-                            <% }) %>
-                    </div>
-                    <!-- Imagen principal + Info del artesano + Redes sociales -->
-                    <div class="img-principal col-10 d-flex flex-column align-items-center justify-content-center">
-                        <img src="<%= imagenes[0].urlImagen %>" class="img-fluid object-fit-contain rounded mb-3"
-                            alt="<%= producto.nombre %>">
-                    </div>
-                </div>
+                        class="container row col-12 col-md-7 d-flex align-items-center justify-content-center gap-3 imgs-container">
+                        <!-- Imagen principal  -->
+                        <section id="main-carousel" class="  splide" aria-label="My Awesome Gallery">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <% imagenes.forEach(function(img) { %>
+                                        <li class="splide__slide">
+                                            <img src="<%= img.urlImagen %>"  alt="">
+                                        </li>
+                                        <% }) %>
+                                    </ul>
+                                </div>
+                            </section>
+                            
+                            <!-- Miniaturas -->
+                            
+                                <ul id="thumbnails" class="thumbnails">
+                                    <% imagenes.forEach(function(img) { %>
+                                        <li class="thumbnail">
+                                            <img src="<%= img.urlImagen %>" class="img-thumbnail" alt="">
+                                        </li>
+                                        <% }) %>
+                                
+                                </ul>
+                        </div>
                 <!-- Info producto -->
                 <div class="col-12 col-md-5 px-3">
                     <h2 class="fw-bold mb-2">
@@ -38,7 +50,7 @@
                         <%= producto.descripcionProducto %>
                     </p>
                     <div class="mb-3">
-                        <span class="fw-semibold text-muted">Categoría:</span>
+                        <span class="fw-semibold text-muted">Categorías:</span>
                         <% if (categoriaP && categoriaP.length) { %>
                             <% categoriaP.forEach(categoria=> { %>
                                 <span class="text-dark">
@@ -154,6 +166,7 @@
         <%- include('../partials/footer.ejs'); %>
             <script src="/lib/js/bootstrap.min.js.map"></script>
             <script src="/lib/js/bootstrap.bundle.min.js"></script>
+            <script src="/lib/splide/js/splide.min.js"></script>
             <script src="/js/productos.js"> </script>
             <script src="/js/login_signup.js"></script>
             <!-- Bootstrap + FontAwesome -->

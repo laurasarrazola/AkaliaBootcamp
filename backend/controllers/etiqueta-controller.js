@@ -40,10 +40,10 @@ const obtenerEtiquetasPorProducto = (req, res) => {
   const idProducto = req.params.id;
   console.log('Buscando categorías para producto con ID:', idProducto); 
   const query = `
-    SELECT c.* 
-    FROM categoria c
-    JOIN productocategoria  cp ON c.idCategoria = cp.idCategoria
-    WHERE cp.idProducto = ?
+    SELECT e.* 
+    FROM etiqueta e
+    JOIN productoetiqueta  pe ON e.idEtiqueta = pe.idEtiqueta
+    WHERE pe.idProducto = ?
   `;
 
   db.query(query, [idProducto], (err, results) => {

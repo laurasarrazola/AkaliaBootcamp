@@ -9,7 +9,7 @@ const {
 /*Solo se definen rutas GET, porque no se permite crear, editar ni eliminar categorías desde la interfaz.*/
 
 // GET una etiqueta por ID producto
-router.get('/producto/:productoId', obtenerEtiquetasPorProducto);
+router.get('/producto/:id', obtenerEtiquetasPorProducto);
 
 // GET todas las etiquetas
 router.get('/', obtenerEtiquetas);

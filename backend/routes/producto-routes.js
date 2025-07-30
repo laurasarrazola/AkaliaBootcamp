@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
 const {
   obtenerProductos,
   obtenerProductoPorId,
@@ -11,7 +14,7 @@ const {
 
 /************************************
  *        CRUD PARA PRODUCTOS
- ************************************/
+************************************/
 // Ruta para obtener todos los productos
 router.get('/', obtenerProductos);
 
@@ -22,11 +25,22 @@ router.get('/usuarios/:id', obtenerProductosConUsuarios)
 // Ruta para obtener un producto por ID
 router.get('/:id', obtenerProductoPorId);
 
-// Ruta para crear un nuevo producto
-router.post('/', crearProducto);
-
 // Ruta para actualizar un producto por ID
-router.put('/:id', actualizarProducto);
+
+router.post('/usuario-productos/:idUsuario/editar/:idProducto',
+  upload.fields([
+    { name: 'imagenes', maxCount: 10 }
+  ]),
+  actualizarProducto
+);
+
+router.post('/usuario-productos/:idUsuario/crear',
+  upload.fields([
+    { name: 'imagenes', maxCount: 10 }
+  ]),
+  crearProducto
+);
+
 
 // Ruta para eliminar un producto por ID
 router.delete('/:id', eliminarProducto);

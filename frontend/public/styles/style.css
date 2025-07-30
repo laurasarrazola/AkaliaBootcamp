@@ -120,13 +120,14 @@ body {
 
 .akalia-sidebar {
   background: #FFDAD7;
-  height: 85vh;
-  width: 15rem;
-  
+  width: 15rem;  
   min-width: 13.9375rem;
-  
+  min-height: calc(90vh - 4rem);
 }
 
+.layout {
+  align-items: stretch;
+}
 .btn-option {
   display: flex;
   width: 13.9375rem;
@@ -164,6 +165,7 @@ body {
   .akalia-sidebar {
     width: 4rem;
     min-width: 4rem;
+    
   }
   .btn-option, .btn-option-active, .btn-option-logout {
     width: 3.5rem;
@@ -194,6 +196,7 @@ body {
 .miniature-container img{
   width: 5rem;
   height: 5rem;
+  object-fit: cover;
 }
 .img-principal img{
   max-height: 38rem;
@@ -201,4 +204,54 @@ body {
  
 .imgs-container {
   max-height: 40rem;
+}
+
+.thumbnails {
+  display: flex;
+  margin: 1rem auto 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+  opacity: 0.3;
+}
+.thumbnail.is-active {
+  opacity: 1;
+}
+.thumbnail img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.splide__slide {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 35rem; /* o el alto que quieras */
+  background-color: #f2f2f2;
+}
+
+.splide__slide img {
+  
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.thumbnail-img {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
 }
