@@ -13,43 +13,65 @@
 
 <body class="d-flex flex-column min-vh-100 m-0 bg-blanco-light">
   <%- include('../partials/navbar.ejs'); %>
-        <div class="d-flex flex-row h-100">
+    <div class="d-flex flex-row h-100">
       <%- include('../partials/sidebar.ejs'); %>
         <main class="flex-grow-1 d-flex flex-column justify-content-center align-content-center py-5">
           <section class="usuario-perfil-card">
-              <h2 class="usuario-perfil-title m-0">Editar Emprendimiento</h2>
-              <div class="usuario-perfil-info">
-                <form id="form-editar-emprendimiento">
+            <h2 class="usuario-perfil-title m-0">Editar Emprendimiento</h2>
+            <div class="usuario-perfil-info">
+              <form id="form-editar-emprendimiento"
+                action="http://localhost:3000/api/emprendimientos/usuario/<%= usuario.idPersona %>/editar/<%= emprendimiento.idEmprendimiento %>" method="POST" enctype="multipart/form-data">
 
-                  <input type="hidden" id="idPersona" value="<%= emprendimiento.idPersona %>">
-                  <input type="hidden" id="fechaRegistro"
-                    value="<%= emprendimiento.fechaRegistro.toISOString ? emprendimiento.fechaRegistro.toISOString().split('T')[0] : emprendimiento.fechaRegistro %>">
+                <div class="mb-3">
+                  <label for="nombreEmprendimiento" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombreEmprendimiento" name="nombreEmprendimiento"
+                    value="<%= emprendimiento.nombreEmprendimiento %>" required>
+                </div>
+                <div class="mb-3  d-flex  justify-content-between flex-wrap">
+                  <div class="col-10 col-md-3">
+                    <label class="form-label usuario-perfil-label">Logo actual</label>
+                    <ul id="thumbnails" class="thumbnails">
 
-                  <input type="hidden" id="idEmprendimiento" value="<%= emprendimiento.idEmprendimiento %>">
+                      <li class="thumbnail-img rounded-0">
+                        <img src="<%= emprendimiento.imagenLogo %>" class="img-thumbnail" alt="">
+                      </li>
 
-                  <div class="mb-3">
-                    <label for="nombreEmprendimiento" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombreEmprendimiento" name="nombreEmprendimiento"
-                      value="<%= emprendimiento.nombreEmprendimiento %>" required>
+                    </ul>
                   </div>
-
-                  <div class="mb-3">
-                    <label for="imagenLogo" class="form-label">Logo (URL)</label>
-                    <input type="text" class="form-control" id="imagenLogo" name="imagenLogo"
-                      value="<%= emprendimiento.imagenLogo %>">
+                  <div class="col-10 col-md-7">
+                    <label for="logoImagen" class="form-label usuario-perfil-label">Logo nuevo</label>
+                    <input class="form-control" type="file" id="logoImagen" name="logoImagen" accept="image/*">
+                    <small class="text-muted">Puedes seleccionar varias imágenes. Las anteriores se
+                      reemplazarán.</small>
                   </div>
+                </div>
 
+
+                <div class="mb-3">
+                  <label for="descripcionNegocio" class="form-label">Descripción</label>
+                  <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="4"
+                    required><%= emprendimiento.descripcionNegocio %></textarea>
+                </div>
+
+                <% redesDisponibles.forEach(red=> {
+                  const redExistente = (redSocial || []).find(rs => rs.nombreRedSocial.toLowerCase() ===
+                  red.toLowerCase());
+                  %>
                   <div class="mb-3">
-                    <label for="descripcionNegocio" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="4"
-                      required><%= emprendimiento.descripcionNegocio %></textarea>
+                    <label class="form-label usuario-perfil-label">
+                      <%= red %>
+                    </label>
+                    <input type="text" name="redes[<%= red.toLowerCase() %>]" class="form-control"
+                      placeholder="https://..." value="<%= redExistente ? redExistente.url : '' %>">
                   </div>
+                  <% }) %>
 
-                  <button type="submit" class="btn btn-terracota">Guardar Cambios</button>
-                  <a href="/usuario-emprendimientos/<%= emprendimiento.idPersona %>"
-                    class="btn btn-basic">Cancelar</a>
-                </form>
-              </div>
+
+                    <button type="submit" class="btn btn-terracota">Guardar Cambios</button>
+                    <a href="/usuario-emprendimientos/<%= emprendimiento.idPersona %>"
+                      class="btn btn-basic">Cancelar</a>
+              </form>
+            </div>
           </section>
         </main>
     </div>

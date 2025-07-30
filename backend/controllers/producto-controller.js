@@ -73,7 +73,6 @@ WHERE u.idPersona = ?;
  *     INSERCIÓN NUEVO PRODUCTO
  ************************************/
 const crearProducto = (req, res) => {
-  const idProducto = req.params.idProducto;
   const idUsuario = req.params.idUsuario;
   const {
     idEmprendimiento,
@@ -236,7 +235,6 @@ const actualizarProducto = (req, res) => {
         };
 
         // 3. Insertar nuevas relaciones
-
 
         const insertarRelaciones = () => {
           const inserts = [];

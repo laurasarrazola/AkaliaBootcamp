@@ -223,7 +223,7 @@ router.get("/usuario-productos/:idUsuario/editar/:idProducto", async (req, res) 
 });
 
 
-/** Ruta get crear usuario**/
+/** Ruta get crear producto**/
 
 router.get("/usuario-productos/:idUsuario/crear", async (req, res) => {
     try {

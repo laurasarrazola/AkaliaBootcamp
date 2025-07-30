@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const {
   obtenerEmprendimientos,
   obtenerEmprendimientoPorId,
@@ -23,10 +25,11 @@ router.get('/redes/:id', obtenerEmprendimientosConRedes);
 router.get('/:id', obtenerEmprendimientoPorId);
 
 // Ruta para crear nuevo emprendimiento
-router.post('/', crearEmprendimiento);
+router.post('/', upload.single('logoImagen'), crearEmprendimiento);
 
 // Ruta para actualizar emprendimiento por ID
-router.put('/:id', actualizarEmprendimiento);
+router.post('/usuario/:idUsuario/editar/:idEmprendimiento', upload.single('logoImagen'),
+  actualizarEmprendimiento);
 
 // Ruta para eliminar emprendimiento por ID
 router.delete('/:id', eliminarEmprendimiento);

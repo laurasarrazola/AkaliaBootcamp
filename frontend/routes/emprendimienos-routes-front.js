@@ -41,7 +41,7 @@ router.get('/usuario-emprendimientos/:id', async (req, res) => {
   }
 });
 
-//Crear ruta frontend que renderice el formulario
+//Crear ruta get que renderice el formulario de creacion
 router.get('/usuario-agregar-emprendimiento/:id', async (req, res) => {
   try {
     const idUsuario = req.params.id;
@@ -50,9 +50,12 @@ router.get('/usuario-agregar-emprendimiento/:id', async (req, res) => {
     const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${idUsuario}`);
     const usuario = resU.data;
 
+    const redesDisponibles = ['whatsapp','instagram','facebook'];
+
     res.render('pages/usuario-agregar-emprendimiento.ejs', {
       idPersona: usuario.idPersona,
       usuario:usuario,
+      redesDisponibles,
       titulo: 'Agregar nuevo emprendimiento',
     });
   } catch (error) {
@@ -104,9 +107,15 @@ router.get('/usuario-emprendimientos/:idUsuario/editar/:idEmprendimiento', async
     const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${idUsuario}`);
     const usuario = resU.data;
 
+    const responseRedSocial = await axios.get(`${API_BASE_URL}/api/redSocial/${emprendimiento.idEmprendimiento}`);
+    const redSocial = responseRedSocial.data;
+
+    const redesDisponibles = ['whatsapp','instagram','facebook'];
     res.render('pages/usuario-editar-emprendimiento.ejs', {
       emprendimiento,
       usuario,
+      redSocial,
+      redesDisponibles,
       titulo: 'Editar Emprendimiento'
     });
   } catch (error) {
