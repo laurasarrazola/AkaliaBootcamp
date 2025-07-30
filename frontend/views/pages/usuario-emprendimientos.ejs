@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/styles/usuario-perfil.css"><!-- Crea este archivo para estilos personalizados -->
 </head>
 
-<body class="d-flex flex-column min-vh-100 m-0 bg-blanco-light">
+<body class="h-100 m-0 d-flex flex-column vh-100 bg-blanco-light">
   <%- include('../partials/navbar.ejs'); %>
-    <div class="layout d-flex">
+    <div class="d-flex flex-row h-100">
       <%- include('../partials/sidebar.ejs'); %>
         <main class="flex-grow-1 d-flex flex-column justify-content-center align-content-center py-5">
-          <section class="usuario-perfil-card">
+          <section class="usuario-perfil-card overflow-auto">
             <div class="d-flex flex-md-row flex-column justify-content-between align-items-start pb-4 gap-3">
               <h2 class="usuario-perfil-title m-0">Mis Emprendimientos</h2>
               <a id="btnAddEmprendimiento" href="/usuario-agregar-emprendimiento/<%= usuario.idPersona %>"
@@ -23,7 +23,7 @@
 
             </div>
             <% emprendimiento.forEach(e=> { %>
-              <article class="usuario-perfil-info d-flex flex-column gap-3 mb-3 overflow-scroll">
+              <article class="usuario-perfil-info d-flex flex-column gap-3 mb-3">
 
                 <div class="d-flex flex-column flex-md-row gap-4 align-items-center ">
                   <!-- Logo del emprendimiento -->
@@ -107,6 +107,17 @@
                   <div class="d-flex flex-md-column gap-2 justify-content-center my-auto align-items-center w-100  ">
                     <button class="w-100 btn btn-disable px-3 py-2 d-none">Activo</button>
                     <div class="d-flex col-5 col-md-12 justify-content-center w-md-100">
+                      <button onclick="showEmprendimientoDetail('<%= usuario.idPersona %>','<%= e.idEmprendimiento %>')" class="btn text-vinotinto"
+                        title="Ver">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 20" fill="none">
+                          <path
+                            d="M28 10C28 10 22.75 0.375 14 0.375C5.25 0.375 0 10 0 10C0 10 5.25 19.625 14 19.625C22.75 19.625 28 10 28 10ZM2.05275 10C2.89762 8.71303 3.87094 7.51514 4.95775 6.42475C7.21 4.169 10.29 2.125 14 2.125C17.71 2.125 20.7882 4.169 23.044 6.42475C24.1308 7.51514 25.1041 8.71303 25.949 10C25.8487 10.1517 25.7349 10.3197 25.6077 10.504C25.0215 11.344 24.1553 12.464 23.044 13.5753C20.7882 15.831 17.7083 17.875 14 17.875C10.2917 17.875 7.21175 15.831 4.956 13.5753C3.86919 12.4849 2.89762 11.287 2.05275 10Z"
+                            fill="currentColor" />
+                          <path
+                            d="M14 5.625C12.8397 5.625 11.7269 6.08594 10.9064 6.90641C10.0859 7.72688 9.625 8.83968 9.625 10C9.625 11.1603 10.0859 12.2731 10.9064 13.0936C11.7269 13.9141 12.8397 14.375 14 14.375C15.1603 14.375 16.2731 13.9141 17.0936 13.0936C17.9141 12.2731 18.375 11.1603 18.375 10C18.375 8.83968 17.9141 7.72688 17.0936 6.90641C16.2731 6.08594 15.1603 5.625 14 5.625ZM7.875 10C7.875 8.37555 8.52031 6.81763 9.66897 5.66897C10.8176 4.52031 12.3755 3.875 14 3.875C15.6245 3.875 17.1824 4.52031 18.331 5.66897C19.4797 6.81763 20.125 8.37555 20.125 10C20.125 11.6245 19.4797 13.1824 18.331 14.331C17.1824 15.4797 15.6245 16.125 14 16.125C12.3755 16.125 10.8176 15.4797 9.66897 14.331C8.52031 13.1824 7.875 11.6245 7.875 10Z"
+                            fill="currentColor" />
+                        </svg>
+                      </button>
 
                       <button class="btn text-vinotinto" title="Editar"
                         onclick="editUserProductDetail('<%= usuario.idPersona %>','<%= e.idEmprendimiento %>')">
@@ -146,6 +157,7 @@
       <script src="/lib/js/bootstrap.min.js.map"></script>
       <script src="/lib/js/bootstrap.bundle.min.js"></script>
       <script src="/js/perfilEmprendimiento.js"></script>
+      <script src="/js/login_signup.js"></script>
       <!-- Bootstrap + FontAwesome -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </body>

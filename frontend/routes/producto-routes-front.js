@@ -168,7 +168,7 @@ router.get('/usuario-productos/:idUsuario/detalle/:idProducto', async (req, res)
     }
 });
 
-/** Ruta get editar usuario**/
+/** Ruta get producto usuario**/
 
 router.get("/usuario-productos/:idUsuario/editar/:idProducto", async (req, res) => {
     try {

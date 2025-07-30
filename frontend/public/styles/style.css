@@ -9,6 +9,10 @@ body {
   max-height: 70px;
 }
 
+.nav-protegida {
+  visibility: hidden;
+}
+
 #imgHeader {
   max-height: 50px;
   min-width: 30px;

@@ -19,3 +19,5 @@ router.use('/productos', productoRoutes);
 
 router.use('/', emprendimientoRoutes);
 module.exports = router;
+
+// solo-visitante

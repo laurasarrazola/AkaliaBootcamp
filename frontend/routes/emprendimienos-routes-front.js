@@ -41,6 +41,48 @@ router.get('/usuario-emprendimientos/:id', async (req, res) => {
   }
 });
 
+// Obtener un emprendimiento del usuario
+router.get('/usuario-emprendimientos/:idU/detalle/:idE', async (req, res) => {
+  try {
+
+    const idEmprendimiento = req.params.idE 
+    const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.idU}`);
+    const usuario = resU.data;
+
+    const responseC = await axios.get(`${API_BASE_URL}/api/categorias`);
+    const categorias = responseC.data;
+
+    const response = await axios.get(`${API_BASE_URL}/api/emprendimientos/${idEmprendimiento}`);
+    const emprendimiento = response.data;
+
+    const responseRedSocial = await axios.get(`${API_BASE_URL}/api/redSocial/${emprendimiento.idEmprendimiento}`);
+    const redSocial = responseRedSocial.data;
+
+    console.log(emprendimiento)
+
+    const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.idU}`);
+    const productos = responseP.data;
+
+    res.render('pages/usuario-emprendimiento.ejs', {
+      usuario: usuario,
+      categorias: categorias,
+      emprendimiento: emprendimiento,
+      redSocial: redSocial,
+      productos: productos,
+
+      titulo: 'Emprendimientos del Usuario',
+    });
+  } catch (error) {
+    console.error('Error al obtener los productos:', error.message);
+
+    //Renderizar pagina de error
+    res.status(500).render('error', {
+      error: 'Error del servidor',
+      message: 'No se pudieron cargar los productos. Verifica que el backend esté funcionando.',
+    });
+  }
+});
+
 //Crear ruta get que renderice el formulario de creacion
 router.get('/usuario-agregar-emprendimiento/:id', async (req, res) => {
   try {

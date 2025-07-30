@@ -17,21 +17,23 @@
       <section>
         <!-- Banner principal -->
         <div class="akalia-banner" style="background-image: url('/img/imgs/banner.svg');">
-          <div class="col-11 akalia-banner-content">
+          <div class="col-11 akalia-banner-content ">
             <span class="akalia-banner-subtitle fs-5">Explora Akalia</span>
             <h1 class="akalia-banner-title fs-1">Conecta con el arte<br>hecho a mano</h1>
             <p class="akalia-banner-desc fs-6">Descubre piezas únicas hechas por manos colombianas.<br>
               Diseños con historia, tradición y alma.
             </p>
-            <button class="btn btn-explorar" type="button" data-bs-target=".categoria-container">Explorar ahora</button>
+            <button class="btn btn-explorar" type="button" data-bs-target=".categoria-container" onclick="showListProducts()">Explorar ahora</button>
           </div>
-          <div class="col-11  d-flex flex-column align-items-end justify-content-end mb-5 ">
+          <div class="col-11  d-flex flex-column align-items-end justify-content-end mb-5 solo-visitante">
+            
             <div class="d-flex align-items-center akalia-banner-register gap-2  p-3 rounded-2">
               <span class=" fst-italic fs-6">¿Quieres dar a conocer tu arte?</span>
 
               <button class="btn btn-terracota" data-bs-toggle="modal"
                 data-bs-target="#registerModal">Registrarse</button>
             </div>
+
           </div>
         </div>
       </section>

@@ -26,15 +26,18 @@ router.get('/', async (req, res) => {
     const responseImagenes = await axios.get(`${API_BASE_URL}/api/imagenes-producto`);
     const imagenes = responseImagenes.data;
 
+   
+
     res.render('pages/index.ejs', {
       categorias: categorias,
       productos: productos,
       imagenes: imagenes,
+
       titulo: 'Publicaciones',
     });
   } catch (error) {
     console.error('Error al obtener las categorías:', error.message);
-
+    
     //Renderizar pagina de error
     res.status(500).render('Error al obtener las categorías', {
       error: 'Error del servidor',

@@ -1,5 +1,5 @@
 * {
-  font-family:  var(--texto-descriptivo-font-family);
+  font-family:  var( --texto-regular-font-family);
 }
 
 .usuario-perfil-card {
