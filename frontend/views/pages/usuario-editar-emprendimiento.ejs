@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    <%= titulo %> | Akalia
+  </title>
+  <link rel="stylesheet" href="/styles/usuario-perfil.css">
+  <%- include('../partials/head.ejs'); %>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100 m-0 bg-blanco-light">
+  <%- include('../partials/navbar.ejs'); %>
+        <div class="d-flex flex-row h-100">
+      <%- include('../partials/sidebar.ejs'); %>
+        <main class="flex-grow-1 d-flex flex-column justify-content-center align-content-center py-5">
+          <section class="usuario-perfil-card">
+              <h2 class="usuario-perfil-title m-0">Editar Emprendimiento</h2>
+              <div class="usuario-perfil-info">
+                <form id="form-editar-emprendimiento">
+
+                  <input type="hidden" id="idPersona" value="<%= emprendimiento.idPersona %>">
+                  <input type="hidden" id="fechaRegistro"
+                    value="<%= emprendimiento.fechaRegistro.toISOString ? emprendimiento.fechaRegistro.toISOString().split('T')[0] : emprendimiento.fechaRegistro %>">
+
+                  <input type="hidden" id="idEmprendimiento" value="<%= emprendimiento.idEmprendimiento %>">
+
+                  <div class="mb-3">
+                    <label for="nombreEmprendimiento" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombreEmprendimiento" name="nombreEmprendimiento"
+                      value="<%= emprendimiento.nombreEmprendimiento %>" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="imagenLogo" class="form-label">Logo (URL)</label>
+                    <input type="text" class="form-control" id="imagenLogo" name="imagenLogo"
+                      value="<%= emprendimiento.imagenLogo %>">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="descripcionNegocio" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcionNegocio" name="descripcionNegocio" rows="4"
+                      required><%= emprendimiento.descripcionNegocio %></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-terracota">Guardar Cambios</button>
+                  <a href="/usuario-emprendimientos/<%= emprendimiento.idPersona %>"
+                    class="btn btn-basic">Cancelar</a>
+                </form>
+              </div>
+          </section>
+        </main>
+    </div>
+
+    <script src="/js/perfilEmprendimiento.js"></script>
+    <script src="/lib/js/bootstrap.min.js.map"></script>
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/login_signup.js"></script>
+    <!-- Bootstrap + FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+<%- include('../partials/footer.ejs'); %>
+
+</html>

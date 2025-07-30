@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Editar producto | Akalia</title>
+  <%- include('../partials/head.ejs'); %>
+    <link rel="stylesheet" href="/styles/usuario-perfil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+</head>
+
+<body class="h-100 m-0 d-flex flex-column vh-100 bg-blanco-light">
+  <%- include('../partials/navbar.ejs'); %>
+    <div class="d-flex flex-row h-100 ">
+      <%- include('../partials/sidebar.ejs'); %>
+        <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center py-5">
+
+          <section class="usuario-perfil-card overflow-scroll">
+            <h2 class="usuario-perfil-title">Agregar nuevo emprendimiento</h2>
+            <div class="usuario-perfil-info">
+              <!-- Modal o formulario para crear nuevo emprendimiento -->
+              <form id="formNuevoEmprendimiento" method="POST" action="/usuario-agregar-emprendimiento">
+          
+                <input type="hidden" name="idPersona" value="<%= idPersona %>">
+          
+                <div class="mb-3">
+                  <label for="nombreEmprendimiento" class="form-label">Nombre del Emprendimiento</label>
+                  <input type="text" class="form-control" name="nombreEmprendimiento" required>
+                </div>
+          
+                <div class="mb-3">
+                  <label for="imagenLogo" class="form-label">URL del Logo</label>
+                  <input type="text" class="form-control" name="imagenLogo">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="descripcionNegocio" class="form-label">Descripción del negocio</label>
+                  <input type="text" class="form-control" name="descripcionNegocio" required>
+                </div>
+          
+                <button type="submit" class="btn btn-terracota">Guardar</button>
+              </form>
+            </div>
+          </section>
+        </main>
+    </div>
+
+    <script src="/lib/js/bootstrap.min.js.map"></script>
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/perfilUsuario.js"></script>
+    <script src="/js/tagify.js"></script>
+    <script src="/js/perfilEmprendimiento.js"></script>
+    <!-- Bootstrap + FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- Tagify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+
+
+</body>
+<%- include('../partials/footer.ejs'); %>
+
+</html>
