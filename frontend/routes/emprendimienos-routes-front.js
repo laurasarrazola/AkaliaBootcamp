@@ -22,7 +22,7 @@ router.get('/usuario-emprendimientos/:id', async (req, res) => {
 
     const responseEmprendimiento = await axios.get(`${API_BASE_URL}/api/emprendimientos/redes/${req.params.id}`);
     const emprendimiento = responseEmprendimiento.data;
-
+    
     res.render('pages/usuario-emprendimientos.ejs', {
       usuario: usuario,
       categorias: categorias,
@@ -60,7 +60,10 @@ router.get('/usuario-emprendimientos/:idU/detalle/:idE', async (req, res) => {
 
     console.log(emprendimiento)
 
-    const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.idU}`);
+    const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.idU}`).catch(err => {
+                console.warn('No se cargaron los productos', err.message);
+                return { data: [] };
+            });
     const productos = responseP.data;
 
     res.render('pages/usuario-emprendimiento.ejs', {

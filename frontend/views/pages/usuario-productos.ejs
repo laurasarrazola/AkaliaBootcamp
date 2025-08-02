@@ -23,7 +23,8 @@
                             <button class="btn filtro-activo">Publicado</button>
                             <button class="btn filtro-inactivo">Inactivo</button>
                         </nav>
-
+                        
+                            <% if (productos.length > 0) { %>
                         <div class="table-responsive">
                             <table class="table tabla-akalia align-middle text-start m-0">
                                 <thead>
@@ -102,6 +103,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <% } else { %>
+                                        <p class="mb-2 usuario-perfil-info">
+                                            No hay productos registrados en este emprendimiento
+                                        </p>
+                                        <% } %>
                     </section>
 
 

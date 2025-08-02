@@ -87,7 +87,11 @@ router.get('/:id', async (req, res) => {
 router.get('/usuario-productos/:id', async (req, res) => {
     console.log(req.params.id)
     try {
-        const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.id}`);
+        const responseP = await axios.get(`${API_BASE_URL}/api/productos/usuarios/${req.params.id}`)
+        .catch(err => {
+                console.warn('No se cargaron los productos', err.message);
+                return { data: [] };
+            });
         const productos = responseP.data;
 
         const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.id}`);
@@ -121,16 +125,29 @@ router.get('/usuario-productos/:idUsuario/detalle/:idProducto', async (req, res)
         const resU = await axios.get(`${API_BASE_URL}/api/usuarios/${req.params.idUsuario}`);
         const usuario = resU.data;
 
-        const responseP = await axios.get(`${API_BASE_URL}/api/productos/${req.params.idProducto}`);
-        const producto = responseP.data;
+        const responseP = await axios
+            .get(`${API_BASE_URL}/api/productos/${req.params.idProducto}`)
+            .catch(err => {
+                console.warn('No se cargaron los productos', err.message);
+                return { data: [] };
+            })
+            const producto = responseP.data;
 
         const responseC = await axios.get(`${API_BASE_URL}/api/categorias`);
         const categorias = responseC.data;
 
-        const responseEmprendimiento = await axios.get(`${API_BASE_URL}/api/emprendimientos/${producto.idEmprendimiento}`);
+        const responseEmprendimiento = await axios.get(`${API_BASE_URL}/api/emprendimientos/${producto.idEmprendimiento}`)
+        .catch(err => {
+                console.warn('No se cargaron los emprendimientos', err.message);
+                return { data: [] };
+            });
         const emprendimiento = responseEmprendimiento.data;
 
-        const responseCategoriaP = await axios.get(`${API_BASE_URL}/api/categorias/producto/${producto.idProducto}`);
+        const responseCategoriaP = await axios.get(`${API_BASE_URL}/api/categorias/producto/${producto.idProducto}`)
+        .catch(err => {
+                console.warn('No se cargaron las categorias', err.message);
+                return { data: [] };
+            });
         const categoriaP = responseCategoriaP.data;
 
         const responseImagenes = await axios.get(`${API_BASE_URL}/api/imagenes-producto/${producto.idProducto}`);
