@@ -103,7 +103,9 @@ La aplicación utiliza `multer` para recibir y guardar imágenes asociadas a pro
 ## 🙋‍♀️ Autoras
 
 **Xiomara García**  
+
 **Laura Sarrazola**
+
 **Paulina Fernandez**
 
 Desarrolladoras web en formación  
