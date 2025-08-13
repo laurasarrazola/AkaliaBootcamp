@@ -1,0 +1,133 @@
+{% extends 'portafolio/base.html' %}
+
+{% block title %}Sobre Mí - Laura Sarrazola{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-5 fw-bold mb-4">Sobre Mí</h1>
+                <p class="lead">Conoce más sobre mi historia, pasiones y lo que me motiva cada día.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Me Content -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-circle text-primary" style="font-size: 4rem;"></i>
+                            <h2 class="mt-3">{{ nombre }}</h2>
+                            <p class="text-muted">{{ edad }} años</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-heart me-2"></i>Mi Historia
+                            </h4>
+                            <p class="lead">{{ descripcion }}</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h5 class="text-primary mb-3">
+                                    <i class="fas fa-music me-2"></i>Gustos Musicales
+                                </h5>
+                                <ul class="list-unstyled">
+                                    {% for artista in gustos_musicales %}
+                                    <li class="mb-2">
+                                        <i class="fas fa-headphones text-muted me-2"></i>{{ artista }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="text-primary mb-3">
+                                    <i class="fas fa-star me-2"></i>Mis Pasiones
+                                </h5>
+                                <ul class="list-unstyled">
+                                    {% for hobby in hobbies %}
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-muted me-2"></i>{{ hobby }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-4 bg-light rounded">
+                            <h5 class="text-primary mb-3">
+                                <i class="fas fa-quote-left me-2"></i>Mi Filosofía
+                            </h5>
+                            <p class="fst-italic mb-0">
+                                "La pasión por aprender y la dedicación a la academia son las fuerzas que me impulsan. 
+                                Cada día es una oportunidad para crecer, tanto personal como profesionalmente."
+                            </p>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a href="{% url 'portafolio:proyectos' %}" class="btn btn-primary me-3">
+                                <i class="fas fa-laptop-code me-2"></i>Ver mis proyectos
+                            </a>
+                            <a href="{% url 'portafolio:contacto' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-envelope me-2"></i>Contáctame
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fun Facts Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <i class="fas fa-cat text-primary mb-3" style="font-size: 2.5rem;"></i>
+                        <h5>Amante de los Gatos</h5>
+                        <p class="text-muted">Los gatos son mi debilidad</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <i class="fas fa-map-marker-alt text-primary mb-3" style="font-size: 2.5rem;"></i>
+                        <h5>Envigado</h5>
+                        <p class="text-muted">Vivo con mi familia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <i class="fas fa-cogs text-primary mb-3" style="font-size: 2.5rem;"></i>
+                        <h5>Ingeniería</h5>
+                        <p class="text-muted">Estudios previos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <i class="fas fa-book text-primary mb-3" style="font-size: 2.5rem;"></i>
+                        <h5>Academia</h5>
+                        <p class="text-muted">Mi gran pasión</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'portafolio/base.html' %}
+
+{% block title %}Inicio - Laura Sarrazola{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <i class="fas fa-user-circle" style="font-size: 5rem; color: white;"></i>
+                </div>
+                <h1 class="display-4 fw-bold mb-3">{{ nombre }}</h1>
+                <p class="lead mb-4">{{ ocupacion }}</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{% url 'portafolio:sobre_mi' %}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user me-2"></i>Conoce más sobre mí
+                    </a>
+                    <a href="{% url 'portafolio:proyectos' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-laptop-code me-2"></i>Ver mis proyectos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Formación Académica</h5>
+                        <p class="card-text">Estudiante apasionada con estudios previos en ingeniería, enfocada en el análisis y desarrollo de software.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-code text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Desarrollo de Software</h5>
+                        <p class="card-text">Apasionada por crear soluciones tecnológicas innovadoras y aprender nuevas tecnologías.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-heart text-primary mb-3" style="font-size: 3rem;"></i>
+                        <h5 class="card-title">Pasión por Aprender</h5>
+                        <p class="card-text">28 años, amante de los gatos, la música y siempre buscando nuevos desafíos académicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">¿Quieres conocer más?</h2>
+                <p class="lead mb-4">Explora mi portafolio y descubre mis proyectos, experiencia y pasiones.</p>
+                <a href="{% url 'portafolio:contacto' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-envelope me-2"></i>Contáctame
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

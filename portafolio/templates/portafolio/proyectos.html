@@ -1,0 +1,163 @@
+{% extends 'portafolio/base.html' %}
+
+{% block title %}Proyectos - Laura Sarrazola{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-5 fw-bold mb-4">Mis Proyectos</h1>
+                <p class="lead">Explora los proyectos en los que he trabajado y las tecnologías que he utilizado.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for proyecto in proyectos %}
+            <div class="col-lg-8 mb-5">
+                <div class="card border-0 shadow-lg h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="flex-shrink-0">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
+                                     style="width: 60px; height: 60px;">
+                                    <i class="fas fa-laptop-code text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="card-title mb-1">{{ proyecto.nombre }}</h3>
+                                <p class="text-muted mb-0">
+                                    <i class="fab fa-github me-2"></i>{{ proyecto.repositorio }}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <p class="card-text lead mb-4">{{ proyecto.descripcion }}</p>
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary mb-3">
+                                <i class="fas fa-tools me-2"></i>Tecnologías Utilizadas
+                            </h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                {% for tecnologia in proyecto.tecnologias %}
+                                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary fs-6 py-2 px-3">
+                                    {{ tecnologia }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>Plataforma Showroom</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>Gestión de Productos</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>Subida de Imágenes</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <span>API REST</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-4 bg-light rounded">
+                            <h6 class="text-primary mb-2">
+                                <i class="fas fa-info-circle me-2"></i>Sobre el Proyecto
+                            </h6>
+                            <p class="mb-0 small">
+                                Akalia fue desarrollado como proyecto final del bootcamp de programación nivel integrador. 
+                                Es una plataforma enfocada en productos artesanales donde los usuarios pueden crear, 
+                                editar y visualizar productos, así como gestionar sus imágenes, categorías y etiquetas.
+                            </p>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a href="https://github.com/laurasarrazola/AkaliaBootcamp" 
+                               target="_blank" 
+                               class="btn btn-primary btn-lg">
+                                <i class="fab fa-github me-2"></i>Ver en GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-5">Habilidades Técnicas</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 h-100">
+                            <div class="card-body">
+                                <i class="fas fa-code text-primary mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>Frontend</h5>
+                                <p class="text-muted">HTML, CSS, Bootstrap, EJS</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 h-100">
+                            <div class="card-body">
+                                <i class="fas fa-server text-primary mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>Backend</h5>
+                                <p class="text-muted">Node.js, Express.js, Python, Django</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 h-100">
+                            <div class="card-body">
+                                <i class="fas fa-database text-primary mb-3" style="font-size: 2.5rem;"></i>
+                                <h5>Base de Datos</h5>
+                                <p class="text-muted">MySQL, SQLite</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">¿Interesado en colaborar?</h2>
+                <p class="lead mb-4">Estoy siempre abierta a nuevos proyectos y oportunidades de aprendizaje.</p>
+                <a href="{% url 'portafolio:contacto' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-envelope me-2"></i>Contáctame
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

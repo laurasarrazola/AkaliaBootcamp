@@ -1,0 +1,11 @@
+# Django portfolio specific
+db.sqlite3
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.tox
+nosetests.xml
